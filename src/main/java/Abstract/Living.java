@@ -2,7 +2,7 @@ package Abstract;
 
 import Interfaces.GameObject;
 
-public abstract class Entity implements GameObject {
+public abstract class Living implements GameObject {
     private String name;
     private int id;
     private int weight;

@@ -1,6 +1,6 @@
 package Abstract;
 
-public abstract class Animal extends Entity {
+public abstract class Animal extends Living {
    private int maxMove;
    private int maxFood;
    private int probability;

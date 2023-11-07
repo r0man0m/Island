@@ -1,6 +1,6 @@
 package Abstract;
 
-public abstract class Plant extends Entity{
+public abstract class Plant extends Living {
     public void grow(){
 
     }
