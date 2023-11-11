@@ -1,0 +1,7 @@
+|-
+   ---
+   types: "WORM"
+   name: "Worm"
+   weight: 10
+   maxQuantity: 1000
+   id: 0

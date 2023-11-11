@@ -1,0 +1,9 @@
+|-
+   ---
+   types: "GOAT"
+   name: "Goat"
+   weight: 60000
+   maxQuantity: 140
+   maxMove: 3
+   maxFood: 10000
+   id: 0

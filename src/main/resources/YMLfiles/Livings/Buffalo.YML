@@ -1,0 +1,9 @@
+|-
+   ---
+   types: "BUFFALO"
+   name: "Buffalo"
+   weight: 700000
+   maxQuantity: 10
+   maxMove: 3
+   maxFood: 100000
+   id: 0

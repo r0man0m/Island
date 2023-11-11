@@ -1,0 +1,9 @@
+|-
+   ---
+   types: "FOX"
+   name: "Fox"
+   weight: 8000
+   maxQuantity: 30
+   maxMove: 2
+   maxFood: 2000
+   id: 0

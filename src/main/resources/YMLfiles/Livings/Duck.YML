@@ -1,0 +1,9 @@
+|-
+   ---
+   types: "DUCK"
+   name: "Duck"
+   weight: 1000
+   maxQuantity: 200
+   maxMove: 4
+   maxFood: 150
+   id: 0

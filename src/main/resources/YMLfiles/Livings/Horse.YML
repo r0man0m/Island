@@ -1,0 +1,9 @@
+|-
+   ---
+   types: "HORSE"
+   name: "Horse"
+   weight: 400000
+   maxQuantity: 20
+   maxMove: 4
+   maxFood: 60000
+   id: 0
