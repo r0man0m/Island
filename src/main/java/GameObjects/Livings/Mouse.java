@@ -4,12 +4,14 @@ import Abstract.Herbivorous;
 import Abstract.Omnivorous;
 import Annotations.HerbivorousAnnotation;
 import Annotations.OmnivorousAnnotation;
+import GameObjects.Types;
 
 import java.io.Serializable;
 
 @OmnivorousAnnotation
 public class Mouse extends Omnivorous implements Serializable {
     public Mouse() {
+        super.setTypes(Types.MOUSE);
         super.setName("Mouse");
         super.setWeight(50);
         super.setMaxQuantity(100);

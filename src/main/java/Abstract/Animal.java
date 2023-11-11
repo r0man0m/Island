@@ -1,9 +1,14 @@
 package Abstract;
 
+import GameObjects.Property;
+import GameObjects.Types;
+
+import java.util.HashMap;
+
 public abstract class Animal extends Living {
    private int maxMove;
    private int maxFood;
-   private int probability;
+
    public  void go(){
 
    }
@@ -39,11 +44,4 @@ public abstract class Animal extends Living {
       this.maxFood = maxFood;
    }
 
-   public int getProbability() {
-      return probability;
-   }
-
-   public void setProbability(int probability) {
-      this.probability = probability;
-   }
 }

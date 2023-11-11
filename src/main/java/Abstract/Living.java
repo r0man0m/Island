@@ -1,12 +1,24 @@
 package Abstract;
 
+import GameObjects.Types;
 import Interfaces.GameObject;
 
+
 public abstract class Living implements GameObject {
+    private Types types;
     private String name;
+    transient
     private int id;
     private int weight;
     private int maxQuantity;
+
+    public Living() {
+    }
+
+    protected Living(int id) {
+        this.id = id;
+    }
+
     public abstract void play();
 
     public String getName() {
@@ -17,8 +29,7 @@ public abstract class Living implements GameObject {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getId() {return id;
     }
 
     public void setId(int id) {
@@ -41,8 +52,16 @@ public abstract class Living implements GameObject {
         this.maxQuantity = maxQuantity;
     }
 
+    public Types getTypes() {
+        return types;
+    }
+
+    public void setTypes(Types types) {
+        this.types = types;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return name + " " + id;
     }
 }
