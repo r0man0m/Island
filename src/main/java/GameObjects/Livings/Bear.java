@@ -1,14 +1,13 @@
 package GameObjects.Livings;
 
-import Abstract.Omnivorous;
 import Abstract.Predator;
-import Annotations.OmnivorousAnnotation;
+import Annotations.PredatorAnnotation;
 import GameObjects.Types;
 
 import java.io.Serializable;
 
 
-@OmnivorousAnnotation
+@PredatorAnnotation
 public class Bear extends Predator implements Serializable {
 
 
