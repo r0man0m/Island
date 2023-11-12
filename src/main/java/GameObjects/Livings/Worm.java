@@ -15,8 +15,4 @@ public class Worm extends Living implements Serializable {
         super.setMaxQuantity(1000);
     }
 
-    @Override
-    public void play() {
-
-    }
 }

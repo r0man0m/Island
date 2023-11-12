@@ -21,4 +21,5 @@ public class Bear extends Predator implements Serializable {
         super.setMaxFood(80000);
 
     }
+
 }

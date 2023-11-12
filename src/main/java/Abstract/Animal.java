@@ -9,6 +9,13 @@ public abstract class Animal extends Living {
    private int maxMove;
    private int maxFood;
 
+   @Override
+   public void play() {
+      go();
+      eat();
+      die();
+   }
+
    public  void go(){
 
    }
@@ -20,13 +27,7 @@ public abstract class Animal extends Living {
    }
    public abstract void eat();
 
-   @Override
-   public void play() {
-      go();
-      eat();
-      reproduce();
-      die();
-   }
+
 
    public int getMaxMove() {
       return maxMove;

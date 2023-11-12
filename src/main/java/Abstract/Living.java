@@ -15,11 +15,15 @@ public abstract class Living implements GameObject {
     public Living() {
     }
 
+    @Override
+    public void play() {
+
+    }
+
     protected Living(int id) {
         this.id = id;
     }
 
-    public abstract void play();
 
     public String getName() {
         return name;
