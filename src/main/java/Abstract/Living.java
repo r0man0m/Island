@@ -20,6 +20,11 @@ public abstract class Living implements GameObject {
 
     }
 
+    @Override
+    public void run() {
+        play();
+    }
+
     protected Living(int id) {
         this.id = id;
     }
