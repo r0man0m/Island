@@ -21,5 +21,6 @@ public class Main {
 
         }
         System.out.println("Worm quantity = " + Configurator.getCounter(Types.WORM));
+
     }
 }

@@ -2,8 +2,10 @@ package GameObjects;
 
 import GameObjects.Livings.*;
 import Interfaces.GameObject;
+import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -39,15 +41,11 @@ public class Configurator {
             yamlWriter.close();
         }
 
-        String name = "src/main/resources/YMLfiles/GameObjectsFiles/Cell.YML";
+        String name = "src/main/resources/YMLfiles/GameObjectsFiles/FieldConstructor.YML";
         YamlWriter yamlWriter = new YamlWriter(new FileWriter(name));
-        yamlWriter.write(mapper.writeValueAsString(new Cell()));
+        yamlWriter.write(mapper.writeValueAsString(new FieldConstructor()));
         yamlWriter.close();
 
-         name = "src/main/resources/YMLfiles/GameObjectsFiles/FieldConstructor.YML";
-         yamlWriter = new YamlWriter(new FileWriter(name));
-         yamlWriter.write(mapper.writeValueAsString(new FieldConstructor()));
-         yamlWriter.close();
 
     }
     public static GameObject createGameObjectsFromYML(int choice) throws IOException {
@@ -72,6 +70,7 @@ public class Configurator {
         yamlReader.close();
         return constructor;
     }
+
     public static Cell[][] initGameField() throws IOException, InterruptedException {
         Random random = new Random();
         Cell[][] cells = createGameFieldFromYML().initF();
