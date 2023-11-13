@@ -4,4 +4,6 @@
    name: "Worm"
    weight: 10
    maxQuantity: 1000
+   maxMove: 0
+   maxFood: 0
    id: 0
