@@ -1,13 +1,14 @@
 package GameObjects.Livings;
 
-import Abstract.Living;
-import Annotations.AnimalAnnotation;
+import Abstract.Herbivorous;
+
+import Annotations.HerbivorousAnnotation;
 import GameObjects.Types;
 
 import java.io.Serializable;
 
-@AnimalAnnotation
-public class Worm extends Living implements Serializable {
+@HerbivorousAnnotation
+public class Worm extends Herbivorous implements Serializable {
     public Worm() {
         super.setTypes(Types.WORM);
         super.setName("Worm");

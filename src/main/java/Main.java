@@ -1,16 +1,13 @@
 import GameObjects.*;
-import GameObjects.Livings.Bear;
 import Interfaces.GameObject;
 
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         Configurator.crateYmlFiles();
-       // GameField gameField = new GameField();
        Cell[][] cells = Configurator.initGameField();
         for (Cell[] C:cells) {
             for (Cell Cell:C) {
