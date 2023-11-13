@@ -1,12 +1,7 @@
 package GameObjects;
 
 import Annotations.FieldAnnotation;
-import com.esotericsoftware.yamlbeans.YamlReader;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 @FieldAnnotation
@@ -30,7 +25,7 @@ public class FieldConstructor implements Serializable {
         this.height = height;
     }
 
-    public Cell[][] initF() throws IOException {
+    public Cell[][] initF() {
         int id = 0;
         Cell[][]cells = new Cell[length][height];
         for (int i = 0; i < cells.length; i++) {
