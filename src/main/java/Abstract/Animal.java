@@ -1,9 +1,7 @@
 package Abstract;
 
-import GameObjects.Property;
-import GameObjects.Types;
 
-import java.util.HashMap;
+import GameObjects.Cell;
 
 public abstract class Animal extends Living {
    private int maxMove;
@@ -17,7 +15,7 @@ public abstract class Animal extends Living {
    }
 
    public  void go(){
-
+      Cell[][] cells = getCells();
    }
 
    public  void die(){

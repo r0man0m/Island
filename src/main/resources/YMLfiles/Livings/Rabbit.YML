@@ -1,5 +1,6 @@
 |-
    ---
+   cells: null
    types: "RABBIT"
    name: "Rabbit"
    weight: 2000

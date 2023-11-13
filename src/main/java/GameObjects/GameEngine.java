@@ -6,10 +6,10 @@ import java.util.concurrent.ScheduledExecutorService;
 
 
 public class GameEngine {
-   private final FieldConstructor fieldConstructor = new FieldConstructor();
-   private final Cell[][]cells = fieldConstructor.initF();
+   private static final FieldConstructor fieldConstructor = new FieldConstructor();
+   private static final Cell[][]cells = fieldConstructor.initF();
 
-   public void playGame(){
+   public static void playGame(){
        FactoryThread factory = new FactoryThread();
        Arrays.stream(cells).forEach(c->Arrays.stream(c).forEach(q->q.getQueue().forEach(o->{
            Thread thread = factory.newThread(o);
@@ -19,4 +19,7 @@ public class GameEngine {
        })));
    }
 
+    public static Cell[][] getCells() {
+        return cells;
+    }
 }

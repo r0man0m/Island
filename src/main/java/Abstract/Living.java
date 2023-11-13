@@ -1,10 +1,13 @@
 package Abstract;
 
+import GameObjects.Cell;
+import GameObjects.GameEngine;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
 
 public abstract class Living implements GameObject {
+    private Cell[][]cells;
     private Types types;
     private String name;
     transient
@@ -13,11 +16,20 @@ public abstract class Living implements GameObject {
     private int maxQuantity;
 
     public Living() {
+
     }
 
     @Override
     public void play() {
 
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
+
+    public void setCells() {
+        this.cells = GameEngine.getCells();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package Interfaces;
 
+import GameObjects.Cell;
 import GameObjects.Types;
 
 public interface GameObject extends Runnable{
