@@ -8,7 +8,8 @@ public abstract class Plant extends Living {
     }
 
     @Override
-    public void play() {
+    public void play(Cell[][] cells) {
+        super.play(cells);
         grow();
     }
 }

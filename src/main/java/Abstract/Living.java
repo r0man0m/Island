@@ -20,8 +20,8 @@ public abstract class Living implements GameObject {
     }
 
     @Override
-    public void play() {
-
+    public void play(Cell[][] cells) {
+        this.cells = cells;
     }
 
     public Cell[][] getCells() {
@@ -34,7 +34,7 @@ public abstract class Living implements GameObject {
 
     @Override
     public void run() {
-        play();
+        play(cells);
     }
 
     protected Living(int id) {
