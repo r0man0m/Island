@@ -16,15 +16,15 @@ import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Configurator {
-    private static final GameField gameField = new GameField();
-    private static int id = 0;
-    private static final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
+    private  GameField gameField;
+    private  int id = 0;
+    private  final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
             "Duck.YML", "Eagle.YML", "Fox.YML", "Goat.YML", "Grass.YML", "Horse.YML", "Mouse.YML", "Rabbit.YML",
             "Sheep.YML", "Wolf.YML", "Worm.YML"};
-    private static final Class[]clazzes = {Bear.class, Boa.class, Boar.class, Buffalo.class, Deer.class,
+    private  final Class[]clazzes = {Bear.class, Boa.class, Boar.class, Buffalo.class, Deer.class,
     Duck.class, Eagle.class, Fox.class, Goat.class, Grass.class, Horse.class, Mouse.class,
     Rabbit.class, Sheep.class, Wolf.class, Worm.class};
-    public static void crateYmlFiles() throws IOException {
+    public  void crateYmlFiles() throws IOException {
 
         ObjectMapper mapper = new YAMLMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -48,7 +48,7 @@ public class Configurator {
 
 
     }
-    public static GameObject createGameObjectsFromYML(int choice) throws IOException {
+    public  GameObject createGameObjectsFromYML(int choice) throws IOException {
         String path = "src/main/resources/YMLfiles/Livings/";
         File file = new File(path + livingNames[choice]);
         ObjectMapper mapper = new YAMLMapper();
@@ -60,7 +60,7 @@ public class Configurator {
         yamlReader.close();
         return gameObject;
     }
-    public static FieldConstructor createGameFieldFromYML() throws IOException{
+    public  FieldConstructor createGameFieldFromYML() throws IOException{
         String path = "src/main/resources/YMLfiles/GameObjectsFiles/FieldConstructor.YML";
         File file = new File(path);
         ObjectMapper mapper = new YAMLMapper();
@@ -71,7 +71,8 @@ public class Configurator {
         return constructor;
     }
 
-    public static Cell[][] initGameField() throws IOException, InterruptedException {
+    public  Cell[][] initGameField() throws IOException, InterruptedException {
+        gameField = new GameField();
         Random random = new Random();
         Cell[][] cells = createGameFieldFromYML().initF();
         for (Cell[] C:cells) {
@@ -87,7 +88,7 @@ public class Configurator {
           gameField.setGameField(cells);
           return gameField.getField();
     }
-    public static int getCounter(Types types){
+    public  int getCounter(Types types){
         return gameField.getCount(types);
     }
 }

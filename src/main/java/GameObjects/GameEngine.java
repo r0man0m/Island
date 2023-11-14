@@ -1,15 +1,19 @@
 package GameObjects;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 
 public class GameEngine {
-   private static final FieldConstructor fieldConstructor = new FieldConstructor();
-   private static final Cell[][]cells = fieldConstructor.initF();
+   private  final Cell[][]cells;
 
-   public static void playGame(){
+    public GameEngine(Cell[][]cells) throws IOException, InterruptedException {
+        this.cells = cells;
+    }
+
+    public void playGame(){
        FactoryThread factory = new FactoryThread();
        Arrays.stream(cells).forEach(c->Arrays.stream(c).forEach(q->q.getQueue().forEach(o->{
            Thread thread = factory.newThread(o);
@@ -19,7 +23,7 @@ public class GameEngine {
        })));
    }
 
-    public static Cell[][] getCells() {
+    public  Cell[][] getCells() {
         return cells;
     }
 }

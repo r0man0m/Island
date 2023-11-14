@@ -7,8 +7,12 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Configurator.crateYmlFiles();
-       Cell[][] cells = Configurator.initGameField();
+
+        Configurator configurator = new Configurator();
+        //configurator.crateYmlFiles();
+        GameEngine gameEngine = new GameEngine(configurator.initGameField());
+        Cell[][] cells = gameEngine.getCells();
+
         for (Cell[] C:cells) {
             for (Cell Cell:C) {
                 System.out.println(Cell);
@@ -20,7 +24,7 @@ public class Main {
             }
 
         }
-        System.out.println("Worm quantity = " + Configurator.getCounter(Types.WORM));
+        System.out.println("Worm quantity = " + configurator.getCounter(Types.WORM));
 
     }
 }

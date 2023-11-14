@@ -24,14 +24,6 @@ public abstract class Living implements GameObject {
         this.cells = cells;
     }
 
-    public Cell[][] getCells() {
-        return cells;
-    }
-
-    public void setCells() {
-        this.cells = GameEngine.getCells();
-    }
-
     @Override
     public void run() {
         play(cells);

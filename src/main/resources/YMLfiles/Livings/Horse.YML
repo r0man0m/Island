@@ -1,6 +1,5 @@
 |-
    ---
-   cells: null
    types: "HORSE"
    name: "Horse"
    weight: 400000
