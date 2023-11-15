@@ -14,7 +14,8 @@ public class Bear extends Predator implements Serializable {
     public Bear() {
         super.setTypes(Types.BEAR);
         super.setName("Bear");
-        super.setWeight(500000);
+        super.setMaxWeight(500000);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(5);
         super.setMaxMove(2);
         super.setMaxFood(80000);

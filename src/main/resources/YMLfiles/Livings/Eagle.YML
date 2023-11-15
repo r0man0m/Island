@@ -6,6 +6,7 @@
    types: "EAGLE"
    name: "Eagle"
    weight: 6000
+   maxWeight: 6000
    maxQuantity: 20
    maxMove: 3
    maxFood: 1000

@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.Hashtable;
 
 public class Property {
-    private static final Integer[][] properties = new Integer[15][15];
-    public final static Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
+    private  final Integer[][] properties = new Integer[15][15];
+    public final  Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
             Types.DEER, Types.RABBIT, Types.MOUSE, Types.GOAT, Types.SHEEP, Types.BOAR, Types.BUFFALO,
             Types.DUCK, Types.WORM, Types.GRASS};
 
     public Property() {
 
     }
-    public static Integer[]getProperty(int i){
+    public  Integer[]getProperty(int i){
         properties[0] = new Integer[]{0, 0, 0, 0, 0, 10, 15, 60, 80, 60, 70, 15, 10, 40, 0, 0};//Wolf
         properties[1] = new Integer[]{0, 0, 15, 0, 0, 0, 0, 20, 40, 0, 0, 0, 0, 10, 0, 0};//Boa
         properties[2] = new Integer[]{0, 0, 0, 0, 0, 0, 0, 70, 90, 0, 0, 0, 0, 60, 40, 0};//Fox
@@ -30,7 +30,7 @@ public class Property {
         properties[14] = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100};//Worm
         return properties[i];
     }
-    public static HashMap<Types, Integer> setPropertyMap(Types type, int p){
+    public HashMap<Types, Integer> setPropertyMap(Types type, int p){
         Integer[]arr = getProperty(p);
         HashMap<Types, Integer> propertyMap = new HashMap<>();
         for (int i = 0; i < names.length; i++) {
@@ -38,7 +38,7 @@ public class Property {
         }
         return propertyMap;
     }
-    public static HashMap<Types, Integer> getMap(Types type){
+    public HashMap<Types, Integer> getMap(Types type){
         HashMap<Types, HashMap<Types, Integer>> map = new HashMap<>();
         for (int i = 0; i < names.length - 1; i++) {
             map.put(names[i], setPropertyMap(type, i));

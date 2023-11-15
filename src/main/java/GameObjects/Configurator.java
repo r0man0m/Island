@@ -24,6 +24,7 @@ public class Configurator {
     private  final Class[]clazzes = {Bear.class, Boa.class, Boar.class, Buffalo.class, Deer.class,
     Duck.class, Eagle.class, Fox.class, Goat.class, Grass.class, Horse.class, Mouse.class,
     Rabbit.class, Sheep.class, Wolf.class, Worm.class};
+    private final Property property = new Property();
     public  void crateYmlFiles() throws IOException {
 
         ObjectMapper mapper = new YAMLMapper();
@@ -84,6 +85,7 @@ public class Configurator {
                     GameObject object = createGameObjectsFromYML(random.nextInt(1, livingNames.length));
                     if(testCell(queue, object)) {
                         object.getCoordinate().setCoordinate(x, y);
+                        object.setProperty(property.getMap(object.getTypes()));
                         queue.put(object);
                         gameField.setCounterMap(object.getTypes(), object.getId());
                     }

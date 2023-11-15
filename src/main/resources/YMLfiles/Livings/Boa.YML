@@ -6,6 +6,7 @@
    types: "BOA"
    name: "Boa"
    weight: 1500
+   maxWeight: 1500
    maxQuantity: 30
    maxMove: 1
    maxFood: 3000

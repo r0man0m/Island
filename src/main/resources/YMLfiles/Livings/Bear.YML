@@ -6,6 +6,7 @@
    types: "BEAR"
    name: "Bear"
    weight: 500000
+   maxWeight: 500000
    maxQuantity: 5
    maxMove: 2
    maxFood: 80000

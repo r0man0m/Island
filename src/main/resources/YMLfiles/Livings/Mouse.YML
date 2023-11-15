@@ -6,6 +6,7 @@
    types: "MOUSE"
    name: "Mouse"
    weight: 50
+   maxWeight: 50
    maxQuantity: 100
    maxMove: 1
    maxFood: 10

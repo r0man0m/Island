@@ -6,6 +6,7 @@
    types: "RABBIT"
    name: "Rabbit"
    weight: 2000
+   maxWeight: 2000
    maxQuantity: 150
    maxMove: 2
    maxFood: 450

@@ -11,7 +11,8 @@ public class Boa extends Predator implements Serializable {
     public Boa() {
         super.setTypes(Types.BOA);
         super.setName("Boa");
-        super.setWeight(1500);
+        super.setMaxWeight(1500);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(30);
         super.setMaxMove(1);
         super.setMaxFood(3000);

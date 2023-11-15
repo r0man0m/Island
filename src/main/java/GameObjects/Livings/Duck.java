@@ -13,7 +13,8 @@ public class Duck extends Omnivorous implements Serializable {
     public Duck() {
         super.setTypes(Types.DUCK);
         super.setName("Duck");
-        super.setWeight(1000);
+        super.setMaxWeight(1000);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(200);
         super.setMaxMove(4);
         super.setMaxFood(150);

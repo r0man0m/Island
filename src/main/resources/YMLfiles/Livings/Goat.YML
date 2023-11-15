@@ -6,6 +6,7 @@
    types: "GOAT"
    name: "Goat"
    weight: 60000
+   maxWeight: 60000
    maxQuantity: 140
    maxMove: 3
    maxFood: 10000

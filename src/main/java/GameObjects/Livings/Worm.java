@@ -12,7 +12,8 @@ public class Worm extends Herbivorous implements Serializable {
     public Worm() {
         super.setTypes(Types.WORM);
         super.setName("Worm");
-        super.setWeight(10);
+        super.setMaxWeight(10);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(1000);
     }
 

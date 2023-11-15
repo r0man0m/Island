@@ -11,7 +11,8 @@ public class Rabbit extends Herbivorous implements Serializable {
     public Rabbit() {
         super.setTypes(Types.RABBIT);
         super.setName("Rabbit");
-        super.setWeight(2000);
+        super.setMaxWeight(2000);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(150);
         super.setMaxMove(2);
         super.setMaxFood(450);

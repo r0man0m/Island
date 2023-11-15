@@ -6,6 +6,8 @@ import GameObjects.GameEngine;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
+import java.util.HashMap;
+
 
 public abstract class Living implements GameObject {
     private Cell[][]cells;
@@ -15,7 +17,19 @@ public abstract class Living implements GameObject {
     transient
     private int id;
     private int weight;
+    private int maxWeight;
     private int maxQuantity;
+    private HashMap<Types, Integer> propertyMap;
+
+    @Override
+    public void setProperty(HashMap<Types, Integer> propertyMap) {
+        this.propertyMap = propertyMap;
+    }
+
+    @Override
+    public int getPropery(Types types) {
+        return propertyMap.get(types);
+    }
 
     public Living() {
         coordinate = new Coordinate();
@@ -57,6 +71,15 @@ public abstract class Living implements GameObject {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public void setMaxWeight(int weight) {
+        maxWeight = weight;
+    }
+
+    public int getMaxWeight() {
+        return maxWeight;
     }
 
     public int getMaxQuantity() {

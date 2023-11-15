@@ -11,7 +11,8 @@ public class Eagle extends Predator implements Serializable {
     public Eagle() {
         super.setTypes(Types.EAGLE);
         super.setName("Eagle");
-        super.setWeight(6000);
+        super.setMaxWeight(6000);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(20);
         super.setMaxMove(3);
         super.setMaxFood(1000);

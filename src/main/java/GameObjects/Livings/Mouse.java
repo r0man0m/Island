@@ -13,7 +13,8 @@ public class Mouse extends Omnivorous implements Serializable {
     public Mouse() {
         super.setTypes(Types.MOUSE);
         super.setName("Mouse");
-        super.setWeight(50);
+        super.setMaxWeight(50);
+        super.setWeight(getMaxWeight());
         super.setMaxQuantity(100);
         super.setMaxMove(1);
         super.setMaxFood(10);

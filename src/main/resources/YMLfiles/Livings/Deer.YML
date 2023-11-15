@@ -6,6 +6,7 @@
    types: "DEER"
    name: "Deer"
    weight: 300000
+   maxWeight: 300000
    maxQuantity: 20
    maxMove: 4
    maxFood: 50000

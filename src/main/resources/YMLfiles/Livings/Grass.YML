@@ -6,5 +6,6 @@
    types: "GRASS"
    name: "Plant"
    weight: 1000
+   maxWeight: 1000
    maxQuantity: 200
    id: 0
