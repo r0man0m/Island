@@ -68,53 +68,72 @@ public abstract class Animal extends Living {
                break;
             }
          }
-
          int direction = ThreadLocalRandom.current().nextInt(1, 5);
          int move = ThreadLocalRandom.current().nextInt(1, maxMove + 1);
 
          switch (direction) {
             case 1:// Left direction
                if (x == 0) {
-                  setCoordinate(x, y);
-                  queues.add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Stay here ");
+                  stayHere(queues, x, y);
                } else if ((x - move) >= 0) {
-                  this.setCoordinate(x - move, y);
-                  playerCells[y][x - move].getQueue().add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Move left on " + move + " steps ");
+                  if(testCell(playerCells[y][x - move])) {
+                     this.setCoordinate(x - move, y);
+                     playerCells[y][x - move].getQueue().add(this);
+                     System.out.println(this.getName() + " " + this.getId() + " move left on " + move + " steps ");
+                  }else {
+                     System.out.println("This sell is full for " + this.getName());
+                     stayHere(queues, x, y);
+                  }
+               }else {
+                  stayHere(queues, x, y);
                }
                break;
             case 2: // Top direction
                if (y == 0) {
-                  setCoordinate(x, y);
-                  queues.add(this);
-                  System.out.println(this.getName() + " " + getId() + " Stay here ");
+                  stayHere(queues, x, y);
                } else if ((y - move) >= 0) {
-                  this.setCoordinate(x, y - move);
-                  playerCells[y - move][x].getQueue().add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Move top " + move + " steps ");
+                  if(testCell(playerCells[y - move][x])) {
+                     this.setCoordinate(x, y - move);
+                     playerCells[y - move][x].getQueue().add(this);
+                     System.out.println(this.getName() + " " + this.getId() + " move top " + move + " steps ");
+                  }else {
+                     System.out.println("This sell is full for " + this.getName());
+                     stayHere(queues, x, y);
+                  }
+               }else {
+                  stayHere(queues, x, y);
                }
                break;
             case 3: //Right direction
                if (x == playerCells[0].length - 1) {
-                  setCoordinate(x, y);
-                  queues.add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Stay here");
+                  stayHere(queues, x, y);
                } else if ((x + move) < playerCells.length) {
-                  this.setCoordinate(x + move, y);
-                  playerCells[y][x + move].getQueue().add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Move right on " + move + " steps ");
+                  if(testCell(playerCells[y][x + move])) {
+                     this.setCoordinate(x + move, y);
+                     playerCells[y][x + move].getQueue().add(this);
+                     System.out.println(this.getName() + " " + this.getId() + " move right on " + move + " steps ");
+                  }else {
+                     System.out.println("This sell is full for " + this.getName());
+                     stayHere(queues, x, y);
+                  }
+               }else {
+                  stayHere(queues, x, y);
                }
                break;
             case 4: //Down direction
                if (y == playerCells.length - 1) {
-                  setCoordinate(x, y);
-                  queues.add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Stay here");
+                  stayHere(queues, x, y);
                } else if ((y + move) < playerCells.length) {
-                  setCoordinate(x, y + move);
-                  playerCells[y + move][x].getQueue().add(this);
-                  System.out.println(this.getName() + " " + this.getId() + " Move down " + move + " steps ");
+                  if(testCell(playerCells[y + move][x])) {
+                     setCoordinate(x, y + move);
+                     playerCells[y + move][x].getQueue().add(this);
+                     System.out.println(this.getName() + " " + this.getId() + " move down " + move + " steps ");
+                  }else {
+                     System.out.println("This sell is full for " + this.getName());
+                     stayHere(queues, x, y);
+                  }
+               }else {
+                  stayHere(queues, x, y);
                }
                break;
 
@@ -122,5 +141,19 @@ public abstract class Animal extends Living {
 
 
       }
+   }
+   public boolean testCell(Cell cell){
+      int quantity = (int)cell.getQueue().stream().filter(c->c.getTypes().equals(this.getTypes())).count();
+      if(quantity < this.getMaxQuantity()){
+         return true;
+      }
+      else {
+         return false;
+      }
+   }
+   public void stayHere(ArrayBlockingQueue<GameObject> queues, int x, int y){
+      setCoordinate(x, y);
+      queues.add(this);
+      System.out.println(this.getName() + " " + getId() + " stay here ");
    }
 }
