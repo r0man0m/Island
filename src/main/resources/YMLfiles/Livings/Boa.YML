@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "BOA"
    name: "Boa"
    weight: 1500

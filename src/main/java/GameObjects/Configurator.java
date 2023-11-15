@@ -72,6 +72,8 @@ public class Configurator {
     }
 
     public  Cell[][] initGameField() throws IOException, InterruptedException {
+        int x = 0;
+        int y = 0;
         gameField = new GameField();
         Random random = new Random();
         Cell[][] cells = createGameFieldFromYML().initF();
@@ -80,10 +82,14 @@ public class Configurator {
                 ArrayBlockingQueue<GameObject> queue = CELL.getQueue();
                 for (int i = 0; i < random.nextInt(1, CELL.getCapacity()); i++) {
                     GameObject object = createGameObjectsFromYML(random.nextInt(1, livingNames.length));
+                    object.getCoordinate().setCoordinate(x, y);
                     queue.put(object);
                     gameField.setCounterMap(object.getTypes(), object.getId());
                 }
+                x++;
             }
+            x = 0;
+            y++;
         }
           gameField.setGameField(cells);
           return gameField.getField();

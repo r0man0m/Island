@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "BEAR"
    name: "Bear"
    weight: 500000

@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "GOAT"
    name: "Goat"
    weight: 60000

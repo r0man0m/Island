@@ -27,9 +27,9 @@ public class FieldConstructor implements Serializable {
 
     public Cell[][] initF() {
         int id = 0;
-        Cell[][]cells = new Cell[length][height];
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
+        Cell[][]cells = new Cell[height][length];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < length; j++) {
                 cells[i][j] = new Cell();
                 cells[i][j].setId(id);
                 id++;

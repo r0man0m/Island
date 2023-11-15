@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "WOLF"
    name: "Wolf"
    weight: 50000

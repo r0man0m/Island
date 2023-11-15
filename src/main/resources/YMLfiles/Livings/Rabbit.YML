@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "RABBIT"
    name: "Rabbit"
    weight: 2000

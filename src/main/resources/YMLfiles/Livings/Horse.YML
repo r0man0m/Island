@@ -1,5 +1,8 @@
 |-
    ---
+   coordinate:
+     x: 0
+     "y": 0
    types: "HORSE"
    name: "Horse"
    weight: 400000

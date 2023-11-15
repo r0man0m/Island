@@ -1,6 +1,7 @@
 package Abstract;
 
 import GameObjects.Cell;
+import GameObjects.Coordinate;
 import GameObjects.GameEngine;
 import GameObjects.Types;
 import Interfaces.GameObject;
@@ -8,6 +9,7 @@ import Interfaces.GameObject;
 
 public abstract class Living implements GameObject {
     private Cell[][]cells;
+    private Coordinate coordinate;
     private Types types;
     private String name;
     transient
@@ -16,7 +18,7 @@ public abstract class Living implements GameObject {
     private int maxQuantity;
 
     public Living() {
-
+        coordinate = new Coordinate();
     }
 
     @Override
@@ -74,7 +76,18 @@ public abstract class Living implements GameObject {
     }
 
     @Override
+    public void setCoordinate(int x, int y) {
+        coordinate.setCoordinate(x, y);
+    }
+
+    @Override
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+
+    @Override
     public String toString() {
-        return name + " " + id;
+        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + ")" + "]" + " ";
     }
 }
