@@ -1,10 +1,9 @@
 import GameObjects.*;
-import GameObjects.Livings.Bear;
 import Interfaces.GameObject;
 
 import java.io.IOException;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.stream.Collectors;
+
 
 
 public class Main {
@@ -22,8 +21,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        initGame();
-        play();
+        //initGame();
+       play();
 
     }
     public static void play() throws InterruptedException {
@@ -67,7 +66,7 @@ public class Main {
                 System.out.println(Cell);
                 ArrayBlockingQueue<GameObject> queue =  Cell.getQueue();
                 queue.forEach(c->{
-                            System.out.print(c +  " weight  " + c.getWeight());
+                            System.out.print(c);
                         }
 
                 );

@@ -8,7 +8,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class GameField {
     private Cell[][] cells;
-    public final  Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
+    private final  Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
             Types.DEER, Types.RABBIT, Types.MOUSE, Types.GOAT, Types.SHEEP, Types.BOAR, Types.BUFFALO,
             Types.DUCK, Types.WORM, Types.GRASS};
     private final HashMap<Types, Integer> counterMap = new HashMap<>();

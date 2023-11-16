@@ -1,9 +1,6 @@
 package Abstract;
 
-import GameObjects.Cell;
-import GameObjects.Coordinate;
-import GameObjects.GameEngine;
-import GameObjects.Types;
+import GameObjects.*;
 import Interfaces.GameObject;
 
 import java.util.HashMap;
@@ -20,6 +17,7 @@ public abstract class Living implements GameObject {
     private int maxWeight;
     private int maxQuantity;
     private HashMap<Types, Integer> propertyMap;
+
 
     @Override
     public void setProperty(HashMap<Types, Integer> propertyMap) {
@@ -111,6 +109,6 @@ public abstract class Living implements GameObject {
 
     @Override
     public String toString() {
-        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + ")" + "]" + " ";
+        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
     }
 }
