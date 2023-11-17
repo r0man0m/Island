@@ -5,6 +5,7 @@
      "y": 0
    types: "MOUSE"
    name: "Mouse"
+   avatar: null
    weight: 50
    maxWeight: 50
    maxQuantity: 100

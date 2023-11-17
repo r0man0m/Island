@@ -5,6 +5,7 @@
      "y": 0
    types: "WORM"
    name: "Worm"
+   avatar: null
    weight: 10
    maxWeight: 10
    maxQuantity: 1000

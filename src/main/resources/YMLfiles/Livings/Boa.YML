@@ -5,6 +5,7 @@
      "y": 0
    types: "BOA"
    name: "Boa"
+   avatar: null
    weight: 1500
    maxWeight: 1500
    maxQuantity: 30

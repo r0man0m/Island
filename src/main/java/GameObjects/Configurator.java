@@ -32,7 +32,7 @@ public class Configurator {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
 
 
-        GameObject[]livings = {new Bear(), new Boa(), new Bear(), new Buffalo(), new Deer(), new Duck(),
+        GameObject[]livings = {new Bear(), new Boa(), new Boar(), new Buffalo(), new Deer(), new Duck(),
         new Eagle(), new Fox(), new Goat(), new Grass(), new Horse(), new Mouse(), new Rabbit(),
         new Sheep(), new Wolf(), new Worm()};
 

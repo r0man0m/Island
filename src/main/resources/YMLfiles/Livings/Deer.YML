@@ -5,6 +5,7 @@
      "y": 0
    types: "DEER"
    name: "Deer"
+   avatar: null
    weight: 300000
    maxWeight: 300000
    maxQuantity: 20

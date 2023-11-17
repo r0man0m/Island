@@ -3,11 +3,12 @@
    coordinate:
      x: 0
      "y": 0
-   types: "BEAR"
-   name: "Bear"
-   weight: 500000
-   maxWeight: 500000
-   maxQuantity: 5
+   types: "BOAR"
+   name: "Boar"
+   avatar: null
+   weight: 400000
+   maxWeight: 400000
+   maxQuantity: 50
    maxMove: 2
-   maxFood: 80000
+   maxFood: 50000
    id: 0

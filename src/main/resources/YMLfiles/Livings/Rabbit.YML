@@ -5,6 +5,7 @@
      "y": 0
    types: "RABBIT"
    name: "Rabbit"
+   avatar: null
    weight: 2000
    maxWeight: 2000
    maxQuantity: 150
