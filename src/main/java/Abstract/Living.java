@@ -11,6 +11,7 @@ public abstract class Living implements GameObject {
     private Coordinate coordinate;
     private Types types;
     private String name;
+    private String avatar;
     transient
     private int id;
     private int weight;
@@ -106,9 +107,21 @@ public abstract class Living implements GameObject {
         return coordinate;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    /*@Override
+    public String toString() {
+        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
+    }*/
 
     @Override
     public String toString() {
-        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
+        return "[" + avatar + " " + id +"]";
     }
 }

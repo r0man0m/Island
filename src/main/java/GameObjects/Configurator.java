@@ -17,6 +17,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class Configurator {
     private  GameField gameField;
+    private Avatar avatar;
     private  int id = 0;
     private  final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
             "Duck.YML", "Eagle.YML", "Fox.YML", "Goat.YML", "Grass.YML", "Horse.YML", "Mouse.YML", "Rabbit.YML",
@@ -75,6 +76,7 @@ public class Configurator {
     public  Cell[][] initGameField() throws IOException, InterruptedException {
         int x = 0;
         int y = 0;
+        avatar = new Avatar();
         gameField = new GameField();
         Random random = new Random();
         Cell[][] cells = createGameFieldFromYML().initF();
@@ -86,6 +88,7 @@ public class Configurator {
                     if(testCell(queue, object)) {
                         object.getCoordinate().setCoordinate(x, y);
                         object.setProperty(property.getMap(object.getTypes()));
+                        object.setAvatar(avatar.getAvatarStrings(object.getTypes()));
                         queue.put(object);
                         gameField.setCounterMap(object.getTypes(), object.getId());
                     }

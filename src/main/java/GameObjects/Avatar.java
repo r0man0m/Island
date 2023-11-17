@@ -11,10 +11,9 @@ public class Avatar {
             " \uD83E\uDD85", "\uD83D\uDC0E", " \uD83E\uDD8C", " \uD83D\uDC07", " \uD83D\uDC01", "\uD83D\uDC10",
     " \uD83D\uDC11", " \uD83D\uDC17", " \uD83D\uDC03", " \uD83E\uDD86", "\uD83D\uDC1B", "\uD83C\uDF3F"};
     public Avatar() {
+        avatars = new HashMap<>();
         for (int i = 0; i < avatarStrings.length; i++) {
-            for (Types T: names) {
-                avatars.put(T, avatarStrings[i]);
-            }
+           avatars.put(names[i], avatarStrings[i]);
         }
     }
 
