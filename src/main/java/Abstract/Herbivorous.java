@@ -5,7 +5,7 @@ import GameObjects.Types;
 import Interfaces.GameObject;
 
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 
 public abstract class Herbivorous extends Animal{
