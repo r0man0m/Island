@@ -16,6 +16,7 @@ public interface GameObject extends Runnable{
     public Coordinate getCoordinate();
     public void setWeight(int weight);
     public void setMaxWeight(int weight);
+    public int getMaxWeight();
     public int getWeight();
     public void setProperty(HashMap<Types, Integer> propertyMap);
     public int getPropery(Types types);

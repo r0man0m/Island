@@ -32,24 +32,27 @@ public class Main {
         System.out.println("Start playing");
         System.out.println("-------------");
         System.out.println();
-        int row = 0;
-        for (Cell[] C:cells) {
-            System.out.println("Row " + row);
-            for (Cell Cell:C) {
-                System.out.println(Cell);
-                ArrayBlockingQueue<GameObject> queue =  Cell.getQueue();
-                queue.forEach(c->{
-                            try {
-                                c.play(cells);
-                            }catch (NullPointerException n) {
-                            }
-                        }
 
-                );
-                System.out.println();
+
+            int row = 0;
+            for (Cell[] C : cells) {
+                System.out.println("Row " + row);
+                for (Cell Cell : C) {
+                    System.out.println(Cell);
+                    ArrayBlockingQueue<GameObject> queue = Cell.getQueue();
+                    queue.forEach(c -> {
+                                try {
+                                    c.play(cells);
+                                } catch (NullPointerException n) {
+                                }
+                            }
+
+                    );
+                    System.out.println();
+                }
+                row++;
             }
-            row++;
-        }
+
 
     }
     public static void initGame() throws IOException {

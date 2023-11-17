@@ -27,7 +27,16 @@ public abstract class Animal extends Living {
 
 
    public  void die(Cell[][] cells){
+      int x = getCoordinate().getX();
+      int y = getCoordinate().getY();
       Cell[][] playerCells = cells;
+      ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
+      for (GameObject O: queues) {
+         if (O.getWeight() < O.getMaxWeight()/2){
+            System.out.println(O + " died(");
+            queues.remove(O);
+         }
+      }
    }
    public  void reproduce(Cell[][] cells){
       Cell[][] playerCells = cells;
