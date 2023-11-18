@@ -12,12 +12,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 
-public abstract class Animal extends Living {
+public abstract class Animal extends Living implements Cloneable{
    private int maxMove;
    private int maxFood;
+   private int idChild = 0;
 
    @Override
-   public void play(Cell[][] cells) {
+   public void play(Cell[][] cells) throws CloneNotSupportedException {
       go(cells);
       eat(cells);
       die(cells);
@@ -38,8 +39,19 @@ public abstract class Animal extends Living {
          }
       }
    }
-   public  void reproduce(Cell[][] cells){
+   public  void reproduce(Cell[][] cells) throws CloneNotSupportedException {
+      int x = getCoordinate().getX();
+      int y = getCoordinate().getY();
       Cell[][] playerCells = cells;
+      if(testCell(cells[y][x]) && (playerCells[y][x].getQueue().stream().anyMatch(o->o.getTypes().equals(this.getTypes())))){
+         GameObject child = (GameObject) this.clone();
+         child.setIdChild(idChild);
+         this.idChild++;
+         child.setCoordinate(x, y);
+         child.setAvatar(this.getAvatar());
+         cells[y][x].getQueue().add(child);
+         System.out.println(this + " reproduce ");
+      }
 
    }
    public abstract void eat(Cell[][] cells);
@@ -60,6 +72,11 @@ public abstract class Animal extends Living {
 
    public void setMaxFood(int maxFood) {
       this.maxFood = maxFood;
+   }
+
+   @Override
+   public void setIdChild(int idChild) {
+      this.idChild = idChild;
    }
 
    public  void go(Cell[][]cells) {

@@ -7,7 +7,7 @@ import GameObjects.Types;
 import java.util.HashMap;
 
 public interface GameObject extends Runnable{
-    public void play(Cell[][] cells);
+    public void play(Cell[][] cells) throws CloneNotSupportedException;
     public int getMaxQuantity();
     public void setId(int id);
     public int getId();
@@ -22,5 +22,6 @@ public interface GameObject extends Runnable{
     public int getPropery(Types types);
     public String getAvatar();
     public void setAvatar(String avatar);
+    public void setIdChild(int idChild);
 
 }

@@ -21,7 +21,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        //initGame();
+       // initGame();
        play();
 
     }
@@ -44,6 +44,8 @@ public class Main {
                                 try {
                                     c.play(cells);
                                 } catch (NullPointerException n) {
+                                } catch (CloneNotSupportedException e) {
+                                    throw new RuntimeException(e);
                                 }
                             }
 

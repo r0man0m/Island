@@ -35,13 +35,17 @@ public abstract class Living implements GameObject {
     }
 
     @Override
-    public void play(Cell[][] cells) {
+    public void play(Cell[][] cells) throws CloneNotSupportedException {
         this.cells = cells;
     }
 
     @Override
     public void run() {
-        play(cells);
+        try {
+            play(cells);
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected Living(int id) {
