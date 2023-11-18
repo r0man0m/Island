@@ -63,9 +63,7 @@ public abstract class Animal extends Living {
    }
 
    public  void go(Cell[][]cells) {
-      if ((this.getTypes().equals(Types.GRASS)) || ((this.getTypes().equals(Types.WORM)))) {
-         return;
-      } else {
+      if (!((this.getTypes().equals(Types.GRASS)) || ((this.getTypes().equals(Types.WORM))))) {
          int x = getCoordinate().getX();
          int y = getCoordinate().getY();
          Cell[][] playerCells = cells;
@@ -166,6 +164,7 @@ public abstract class Animal extends Living {
    }
    public void stayHere(ArrayBlockingQueue<GameObject> queues, int x, int y){
       setCoordinate(x, y);
+      this.setWeight((int)(this.getWeight() * 0.9));
       queues.add(this);
       System.out.println(this + " stay here ");
    }
