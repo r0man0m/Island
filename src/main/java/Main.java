@@ -21,8 +21,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-       // initGame();
-       play();
+        initGame();
+      // play();
 
     }
     public static void play() throws InterruptedException {
