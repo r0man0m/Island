@@ -20,8 +20,4 @@ public abstract class Plant extends Living {
         grow();
     }
 
-    @Override
-    public void setIdChild(int idChild) {
-
-    }
 }

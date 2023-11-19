@@ -22,6 +22,6 @@ public interface GameObject extends Runnable{
     public int getProperty(Types types);
     public String getAvatar();
     public void setAvatar(String avatar);
-    public void setIdChild(int idChild);
+
 
 }

@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public abstract class Animal extends Living implements Cloneable{
    private int maxMove;
    private int maxFood;
-   private int idChild = 0;
 
    @Override
    public void play(Cell[][] cells) throws CloneNotSupportedException {
@@ -29,19 +28,6 @@ public abstract class Animal extends Living implements Cloneable{
 
    }
 
-
-  /* public  void die(Cell[][] cells){
-      int x = getCoordinate().getX();
-      int y = getCoordinate().getY();
-      Cell[][] playerCells = cells;
-      ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
-      for (GameObject O: queues) {
-         if ((O.getId() == this.getId()) && (O.getTypes().equals(this.getTypes())) && (O.getWeight() < O.getMaxWeight()/ 20)){
-            System.out.println(O + " died(");
-            queues.remove(this);
-         }
-      }
-   }*/
    public void die(Cell[][] cells){
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
@@ -60,8 +46,6 @@ public abstract class Animal extends Living implements Cloneable{
       Cell[][] playerCells = cells;
       if(testCell(cells[y][x]) && (playerCells[y][x].getQueue().stream().anyMatch(o->o.getTypes().equals(this.getTypes())))){
          GameObject child = (GameObject) this.clone();
-         child.setIdChild(idChild);
-         this.idChild++;
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
          cells[y][x].getQueue().add(child);
@@ -89,10 +73,6 @@ public abstract class Animal extends Living implements Cloneable{
       this.maxFood = maxFood;
    }
 
-   @Override
-   public void setIdChild(int idChild) {
-      this.idChild = idChild;
-   }
 
    public  void go(Cell[][]cells) {
       if (!((this.getTypes().equals(Types.GRASS)) || ((this.getTypes().equals(Types.WORM))))) {
