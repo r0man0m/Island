@@ -20,10 +20,11 @@ public abstract class Animal extends Living implements Cloneable{
 
 
    @Override
-   public void play(GameField gameField) {
+   public void play(GameField gameField) throws CloneNotSupportedException {
       go(gameField);
       eat(gameField);
       die(gameField);
+      reproduce(gameField);
    }
 
    public void die(GameField gameField){
@@ -33,6 +34,7 @@ public abstract class Animal extends Living implements Cloneable{
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       if(this.getWeight() < this.getMaxWeight() / 20){
         queues.remove(this);
+        gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
          System.out.println(this + " died(");
       }
    }
@@ -46,8 +48,10 @@ public abstract class Animal extends Living implements Cloneable{
          GameObject child = (GameObject) this.clone();
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
+         child.setId(gameField.getCount(child.getTypes()) + 1);
+         gameField.setCounterMap(child.getTypes(), child.getId());
          playerCells[y][x].getQueue().add(child);
-         System.out.println(this + " reproduce ");
+         System.out.println(this + " birth " + child);
       }
 
    }
@@ -98,7 +102,7 @@ public abstract class Animal extends Living implements Cloneable{
                      this.setCoordinate(x - move, y);
                      this.setWeight((int)(this.getWeight() * 0.9));
                      playerCells[y][x - move].getQueue().add(this);
-                     System.out.println(this + " move left on " + move + " steps ");
+                     System.out.println(this + " moved left on " + move + " steps ");
                   }else {
                      System.out.println("This sell is full for " + this);
                      stayHere(queues, x, y);
@@ -115,7 +119,7 @@ public abstract class Animal extends Living implements Cloneable{
                      this.setCoordinate(x, y - move);
                      this.setWeight((int)(this.getWeight() * 0.9));
                      playerCells[y - move][x].getQueue().add(this);
-                     System.out.println(this + " move top " + move + " steps ");
+                     System.out.println(this + " moved top " + move + " steps ");
                   }else {
                      System.out.println("This sell is full for " + this);
                      stayHere(queues, x, y);
@@ -132,7 +136,7 @@ public abstract class Animal extends Living implements Cloneable{
                      this.setCoordinate(x + move, y);
                      this.setWeight((int)(this.getWeight() * 0.9));
                      playerCells[y][x + move].getQueue().add(this);
-                     System.out.println(this + " move right on " + move + " steps ");
+                     System.out.println(this + " moved right on " + move + " steps ");
                   }else {
                      System.out.println("This sell is full for " + this);
                      stayHere(queues, x, y);
@@ -149,7 +153,7 @@ public abstract class Animal extends Living implements Cloneable{
                      setCoordinate(x, y + move);
                      this.setWeight((int)(this.getWeight() * 0.9));
                      playerCells[y + move][x].getQueue().add(this);
-                     System.out.println(this + " move down " + move + " steps ");
+                     System.out.println(this + " moved down " + move + " steps ");
                   }else {
                      System.out.println("This sell is full for " + this);
                      stayHere(queues, x, y);
@@ -177,6 +181,6 @@ public abstract class Animal extends Living implements Cloneable{
       setCoordinate(x, y);
       this.setWeight((int)(this.getWeight() * 0.9));
       queues.add(this);
-      System.out.println(this + " stay here ");
+      System.out.println(this + " stayed here ");
    }
 }

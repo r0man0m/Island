@@ -7,7 +7,7 @@ public abstract class Plant extends Living {
 
     public void grow(){
         if(this.getWeight() < this.getMaxWeight()){
-            this.setWeight(this.getWeight() + this.getWeight() / 10);
+            this.setWeight(this.getWeight() + this.getWeight() / 5);
             if(this.getWeight() > this.getMaxWeight()){
                 this.setWeight(this.getMaxWeight());
             }
