@@ -1,9 +1,6 @@
 package Abstract;
 
-import Annotations.WormAnnotation;
 import GameObjects.Cell;
-import GameObjects.GameEngine;
-import GameObjects.Livings.Worm;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
@@ -40,7 +37,7 @@ public abstract class Predator extends Animal {
         }
     }
     public boolean getProbability(Types types){
-        int propertyObject = getPropery(types);
+        int propertyObject = getProperty(types);
         if(propertyObject != 0) {
             int probability = ThreadLocalRandom.current().nextInt(1, 100);
             if(probability > (100 - propertyObject)){

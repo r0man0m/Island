@@ -26,7 +26,7 @@ public abstract class Living implements GameObject {
     }
 
     @Override
-    public int getPropery(Types types) {
+    public int getProperty(Types types) {
         return propertyMap.get(types);
     }
 
@@ -48,7 +48,7 @@ public abstract class Living implements GameObject {
         }
     }
 
-    protected Living(int id) {
+    public Living(int id) {
         this.id = id;
     }
 

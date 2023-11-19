@@ -45,7 +45,7 @@ public abstract class Herbivorous extends Animal{
         }
     }
     public boolean getProbability(Types types){
-        int propertyObject = getPropery(types);
+        int propertyObject = getProperty(types);
         if(propertyObject == 100) {
             return true;
         }else {

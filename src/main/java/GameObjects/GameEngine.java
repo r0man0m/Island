@@ -2,7 +2,6 @@ package GameObjects;
 
 import Interfaces.GameObject;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
@@ -10,14 +9,16 @@ import java.util.concurrent.ScheduledExecutorService;
 
 
 public class GameEngine {
-   private  Cell[][]cells;
+   private final Cell[][]cells;
+   private GameField gameField;
 
 
-    public GameEngine(Cell[][]cells)  {
-        this.cells = cells;
+    public GameEngine(GameField gameField)  {
+        this.gameField = gameField;
+        cells = gameField.getField();
 
     }
-    public  void play() throws InterruptedException, IOException {
+    public  void play() throws InterruptedException {
         Thread.sleep(10000);
         System.out.println("Start playing");
         System.out.println("-------------");

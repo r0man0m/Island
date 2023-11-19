@@ -71,7 +71,7 @@ public class Configurator {
         return constructor;
     }
 
-    public  Cell[][] initGameField() throws IOException, InterruptedException {
+    public  GameField initGameField() throws IOException, InterruptedException {
         int x = 0;
         int y = 0;
         avatar = new Avatar();
@@ -97,7 +97,7 @@ public class Configurator {
             y++;
         }
           gameField.setGameField(cells);
-          return gameField.getField();
+          return gameField;
     }
     public  int getCounter(Types types){
         return gameField.getCount(types);

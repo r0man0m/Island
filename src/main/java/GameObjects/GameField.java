@@ -19,7 +19,7 @@ public class GameField {
     public void setGameField(Cell[][]cells){
         this.cells = cells;
     }
-    public void setCounterMap(Types types, int id) {
+    public void   setCounterMap(Types types, int id) {
         counterMap.put(types, id);
     }
     public int getCount(Types types){

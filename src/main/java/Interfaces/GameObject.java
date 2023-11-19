@@ -19,7 +19,7 @@ public interface GameObject extends Runnable{
     public int getMaxWeight();
     public int getWeight();
     public void setProperty(HashMap<Types, Integer> propertyMap);
-    public int getPropery(Types types);
+    public int getProperty(Types types);
     public String getAvatar();
     public void setAvatar(String avatar);
     public void setIdChild(int idChild);
