@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 
 public abstract class Living implements GameObject {
-    private Cell[][]cells;
     private GameField gameField;
     private Coordinate coordinate;
     private Types types;
@@ -35,10 +34,6 @@ public abstract class Living implements GameObject {
         coordinate = new Coordinate();
     }
 
-   /* @Override
-    public void play() throws CloneNotSupportedException {
-        this.cells = cells;
-    }*/
 
     @Override
     public void play(GameField gameField) throws CloneNotSupportedException {

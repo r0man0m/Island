@@ -7,8 +7,6 @@ import GameObjects.Types;
 import Interfaces.GameObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -35,7 +33,9 @@ public abstract class Animal extends Living implements Cloneable{
       if(this.getWeight() < this.getMaxWeight() / 20){
         queues.remove(this);
         gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
-         System.out.println(this + " died(");
+        gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
+        gameField.setDiedNamesMap(this.getTypes(), this.getName(), this.getId());
+        System.out.println(this + " died(");
       }
    }
 
@@ -50,6 +50,8 @@ public abstract class Animal extends Living implements Cloneable{
          child.setAvatar(this.getAvatar());
          child.setId(gameField.getCount(child.getTypes()) + 1);
          gameField.setCounterMap(child.getTypes(), child.getId());
+         gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()) + 1);
+         gameField.setReproducedNamesMap(child.getTypes(), child.getName(), child.getId());
          playerCells[y][x].getQueue().add(child);
          System.out.println(this + " birth " + child);
       }

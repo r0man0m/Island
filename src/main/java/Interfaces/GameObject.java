@@ -9,6 +9,7 @@ public interface GameObject extends Runnable{
     public int getMaxQuantity();
     public void setId(int id);
     public int getId();
+    public String getName();
     public Types getTypes();
     public void setCoordinate(int x, int y);
     public Coordinate getCoordinate();
