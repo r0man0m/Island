@@ -87,6 +87,7 @@ public class Configurator {
                         object.getCoordinate().setCoordinate(x, y);
                         object.setProperty(property.getMap(object.getTypes()));
                         object.setAvatar(avatar.getAvatarStrings(object.getTypes()));
+                        object.setGameField(gameField);
                         queue.put(object);
                         gameField.setCounterMap(object.getTypes(), object.getId());
                     }

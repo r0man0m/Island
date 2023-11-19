@@ -33,7 +33,7 @@ public class GameEngine {
                 ArrayBlockingQueue<GameObject> queue = Cell.getQueue();
                 queue.forEach(c -> {
                             try {
-                                c.play(cells);
+                                c.play(gameField);
                             } catch (NullPointerException n) {
                             } catch (CloneNotSupportedException e) {
                                 throw new RuntimeException(e);

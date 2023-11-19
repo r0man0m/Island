@@ -17,4 +17,5 @@ public class Deer extends Herbivorous implements Serializable {
         super.setMaxMove(4);
         super.setMaxFood(50000);
     }
+
 }

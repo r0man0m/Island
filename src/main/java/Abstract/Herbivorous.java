@@ -1,6 +1,7 @@
 package Abstract;
 
 import GameObjects.Cell;
+import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
@@ -9,10 +10,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 
 public abstract class Herbivorous extends Animal{
-    public  void eat(Cell[][] cells){
+    public  void eat(GameField gameField){
+        Cell[][]playerCells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
-        Cell[][] playerCells = cells;
         ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
         for (GameObject O: queues) {
             if(this.getWeight() < this.getMaxWeight()){

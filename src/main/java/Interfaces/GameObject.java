@@ -1,13 +1,11 @@
 package Interfaces;
 
-import GameObjects.Cell;
-import GameObjects.Coordinate;
-import GameObjects.Types;
+import GameObjects.*;
 
 import java.util.HashMap;
 
 public interface GameObject extends Runnable{
-    public void play(Cell[][] cells) throws CloneNotSupportedException;
+    public void play(GameField gameField) throws CloneNotSupportedException;
     public int getMaxQuantity();
     public void setId(int id);
     public int getId();
@@ -22,6 +20,6 @@ public interface GameObject extends Runnable{
     public int getProperty(Types types);
     public String getAvatar();
     public void setAvatar(String avatar);
-
-
+    public GameField getGameField();
+    public void setGameField(GameField gameField);
 }

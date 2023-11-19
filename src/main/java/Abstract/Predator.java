@@ -1,6 +1,7 @@
 package Abstract;
 
 import GameObjects.Cell;
+import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
@@ -8,7 +9,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Predator extends Animal {
-    public  void eat(Cell[][] cells){
+    public  void eat(GameField gameField){
+        Cell[][]cells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
         Cell[][] playerCells = cells;

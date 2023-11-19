@@ -1,6 +1,6 @@
 package Abstract;
 
-import GameObjects.Cell;
+import GameObjects.GameField;
 
 
 public abstract class Plant extends Living {
@@ -16,7 +16,7 @@ public abstract class Plant extends Living {
     }
 
     @Override
-    public void play(Cell[][] cells) {
+    public void play(GameField gameField) {
         grow();
     }
 

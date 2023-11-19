@@ -1,6 +1,7 @@
 package Abstract;
 
 import GameObjects.Cell;
+import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
@@ -8,10 +9,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Omnivorous extends Animal{
-    public  void eat(Cell[][] cells){
+    public  void eat(GameField gameField){
+        Cell[][] playerCells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
-        Cell[][] playerCells = cells;
         ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
         for (GameObject O: queues) {
             if(O.getTypes().equals(Types.GRASS)) {

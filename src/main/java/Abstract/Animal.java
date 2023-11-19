@@ -2,6 +2,7 @@ package Abstract;
 
 
 import GameObjects.Cell;
+import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
@@ -17,21 +18,18 @@ public abstract class Animal extends Living implements Cloneable{
    private int maxMove;
    private int maxFood;
 
+
    @Override
-   public void play(Cell[][] cells) throws CloneNotSupportedException {
-
-      go(cells);
-      eat(cells);
-      reproduce(cells);
-      die(cells);
-
-
+   public void play(GameField gameField) {
+      go(gameField);
+      eat(gameField);
+      die(gameField);
    }
 
-   public void die(Cell[][] cells){
+   public void die(GameField gameField){
+      Cell[][] playerCells = gameField.getField();
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
-      Cell[][] playerCells = cells;
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       if(this.getWeight() < this.getMaxWeight() / 20){
         queues.remove(this);
@@ -40,20 +38,20 @@ public abstract class Animal extends Living implements Cloneable{
    }
 
 
-   public  void reproduce(Cell[][] cells) throws CloneNotSupportedException {
+   public  void reproduce(GameField gameField) throws CloneNotSupportedException {
+      Cell[][]playerCells = gameField.getField();
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
-      Cell[][] playerCells = cells;
-      if(testCell(cells[y][x]) && (playerCells[y][x].getQueue().stream().anyMatch(o->o.getTypes().equals(this.getTypes())))){
+      if(testCell(playerCells[y][x]) && (playerCells[y][x].getQueue().stream().anyMatch(o->o.getTypes().equals(this.getTypes())))){
          GameObject child = (GameObject) this.clone();
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
-         cells[y][x].getQueue().add(child);
+         playerCells[y][x].getQueue().add(child);
          System.out.println(this + " reproduce ");
       }
 
    }
-   public abstract void eat(Cell[][] cells);
+   public abstract void eat(GameField gameField);
    public abstract boolean getProbability(Types types);
 
 
@@ -74,7 +72,8 @@ public abstract class Animal extends Living implements Cloneable{
    }
 
 
-   public  void go(Cell[][]cells) {
+   public  void go(GameField gameField) {
+      Cell[][]cells = gameField.getField();
       if (!((this.getTypes().equals(Types.GRASS)) || ((this.getTypes().equals(Types.WORM))))) {
          int x = getCoordinate().getX();
          int y = getCoordinate().getY();

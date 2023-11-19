@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public abstract class Living implements GameObject {
     private Cell[][]cells;
+    private GameField gameField;
     private Coordinate coordinate;
     private Types types;
     private String name;
@@ -34,15 +35,20 @@ public abstract class Living implements GameObject {
         coordinate = new Coordinate();
     }
 
-    @Override
-    public void play(Cell[][] cells) throws CloneNotSupportedException {
+   /* @Override
+    public void play() throws CloneNotSupportedException {
         this.cells = cells;
+    }*/
+
+    @Override
+    public void play(GameField gameField) throws CloneNotSupportedException {
+
     }
 
     @Override
     public void run() {
         try {
-            play(cells);
+            play(gameField);
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
@@ -119,11 +125,19 @@ public abstract class Living implements GameObject {
         this.avatar = avatar;
     }
 
-   /* @Override
-    public String toString() {
-        return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
+    public GameField getGameField() {
+        return gameField;
     }
-*/
+
+    public void setGameField(GameField gameField) {
+        this.gameField = gameField;
+    }
+
+    /* @Override
+        public String toString() {
+            return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
+        }
+    */
     @Override
     public String toString() {
         return "[" + avatar + " " + id +"]";
