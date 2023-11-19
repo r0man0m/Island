@@ -15,6 +15,6 @@ public class Sheep extends Herbivorous implements Serializable {
         super.setWeight(getMaxWeight());
         super.setMaxQuantity(140);
         super.setMaxMove(3);
-        super.setMaxFood(15);
+        super.setMaxFood(15000);
     }
 }
