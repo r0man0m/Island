@@ -15,30 +15,32 @@ public abstract class Omnivorous extends Animal{
         ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
         for (GameObject O: queues) {
             if(O.getTypes().equals(Types.GRASS)) {
-                if (this.getWeight() < this.getMaxWeight()) {
-                    if (getProbability(O.getTypes())) {
-                        if (O.getWeight() > this.getMaxFood()) {
+                if(this.getWeight() < this.getMaxWeight()){
+                    if(getProbability(O.getTypes())){
+                        if((O.getWeight() != 0) && (O.getWeight() > this.getMaxFood())){
                             int food = this.getMaxFood();
                             O.setWeight(O.getWeight() - food);
                             System.out.println(this + " eats " + O);
-                            if ((this.getWeight() + food) > this.getMaxWeight()) {
+                            if((this.getWeight() + food) > this.getMaxWeight()){
                                 this.setWeight(this.getMaxWeight());
-                            } else {
+                            }
+                            else {
                                 this.setWeight(food);
                             }
-                        } else {
+                        }else if(O.getWeight() != 0 ){
                             int food = O.getWeight();
-                            queues.remove(O);
+                            O.setWeight(0);
                             System.out.println(this + " eats " + O);
-                            if ((this.getWeight() + food) > this.getMaxWeight()) {
+                            if((this.getWeight() + food) > this.getMaxWeight()){
                                 this.setWeight(this.getMaxWeight());
-                            } else {
-                                this.setWeight(food);
+
+                            }else {
+                                this.setWeight(food + this.getWeight());
+
                             }
 
                         }
                     }
-
                 }
             }else {
                 if(this.getWeight() < this.getMaxWeight()){

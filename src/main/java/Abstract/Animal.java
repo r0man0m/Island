@@ -6,6 +6,7 @@ import GameObjects.Types;
 import Interfaces.GameObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
@@ -19,26 +20,40 @@ public abstract class Animal extends Living implements Cloneable{
 
    @Override
    public void play(Cell[][] cells) throws CloneNotSupportedException {
+
       go(cells);
       eat(cells);
-      die(cells);
       reproduce(cells);
+      die(cells);
+
+
    }
 
 
-
-   public  void die(Cell[][] cells){
+  /* public  void die(Cell[][] cells){
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
       Cell[][] playerCells = cells;
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       for (GameObject O: queues) {
-         if (O.getWeight() < O.getMaxWeight()/2){
+         if ((O.getId() == this.getId()) && (O.getTypes().equals(this.getTypes())) && (O.getWeight() < O.getMaxWeight()/ 20)){
             System.out.println(O + " died(");
-            queues.remove(O);
+            queues.remove(this);
          }
       }
+   }*/
+   public void die(Cell[][] cells){
+      int x = getCoordinate().getX();
+      int y = getCoordinate().getY();
+      Cell[][] playerCells = cells;
+      ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
+      if(this.getWeight() < this.getMaxWeight() / 20){
+        queues.remove(this);
+         System.out.println(this + " died(");
+      }
    }
+
+
    public  void reproduce(Cell[][] cells) throws CloneNotSupportedException {
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();

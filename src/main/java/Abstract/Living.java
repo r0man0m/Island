@@ -119,11 +119,11 @@ public abstract class Living implements GameObject {
         this.avatar = avatar;
     }
 
-  /*  @Override
+   /* @Override
     public String toString() {
         return "[" + name + " " + id + " (X=" + coordinate.getX() + " Y=" + coordinate.getY() + " weight " + weight + ")" + "]" + " ";
-    }*/
-
+    }
+*/
     @Override
     public String toString() {
         return "[" + avatar + " " + id +"]";
