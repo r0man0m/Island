@@ -2,16 +2,13 @@ package GameObjects;
 
 import GameObjects.Livings.*;
 import Interfaces.GameObject;
-import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
@@ -26,7 +23,7 @@ public class Configurator {
     Duck.class, Eagle.class, Fox.class, Goat.class, Grass.class, Horse.class, Mouse.class,
     Rabbit.class, Sheep.class, Wolf.class, Worm.class};
     private final Property property = new Property();
-    public  void crateYmlFiles() throws IOException {
+    public Cell[][] crateYmlFiles() throws IOException {
 
         ObjectMapper mapper = new YAMLMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -49,6 +46,7 @@ public class Configurator {
         yamlWriter.close();
 
 
+        return new Cell[0][];
     }
     public  GameObject createGameObjectsFromYML(int choice) throws IOException {
         String path = "src/main/resources/YMLfiles/Livings/";
