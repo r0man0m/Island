@@ -21,7 +21,7 @@ public abstract class Omnivorous extends Animal{
                         if((O.getWeight() != 0) && (O.getWeight() > this.getMaxFood())){
                             int food = this.getMaxFood();
                             O.setWeight(O.getWeight() - food);
-                            gameField.setEatenGrassWeight(food);
+                            gameField.setEatenGrassWeight((int) (gameField.getEatenGrassWeight() + food));
                             System.out.println(this + " ate " + O);
                             if((this.getWeight() + food) > this.getMaxWeight()){
                                 this.setWeight(this.getMaxWeight());
@@ -32,7 +32,7 @@ public abstract class Omnivorous extends Animal{
                         }else if(O.getWeight() != 0 ){
                             int food = O.getWeight();
                             O.setWeight(0);
-                            gameField.setEatenGrassWeight(food);
+                            gameField.setEatenGrassWeight((int) (gameField.getEatenGrassWeight() + food));
                             System.out.println(this + " ate " + O);
                             if((this.getWeight() + food) > this.getMaxWeight()){
                                 this.setWeight(this.getMaxWeight());
@@ -64,7 +64,7 @@ public abstract class Omnivorous extends Animal{
                         }
                         queues.remove(O);
                         gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
-                        gameField.setEatenNamesMap(O.getTypes(), O.getName(), O.getId());
+                        gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
                         System.out.println(this + " ate " + O);
                     }
                 }

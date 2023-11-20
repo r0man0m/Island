@@ -30,11 +30,10 @@ public abstract class Animal extends Living implements Cloneable{
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
-      if(this.getWeight() < this.getMaxWeight() / 20){
+      if(this.getWeight() < this.getMaxWeight() / 4){
         queues.remove(this);
         gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
         gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
-        gameField.setDiedNamesMap(this.getTypes(), this.getName(), this.getId());
         System.out.println(this + " died(");
       }
    }
@@ -49,9 +48,8 @@ public abstract class Animal extends Living implements Cloneable{
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
          child.setId(gameField.getCount(child.getTypes()) + 1);
-         gameField.setCounterMap(child.getTypes(), child.getId());
+         gameField.setCounterMap(child.getTypes(), gameField.getCount(child.getTypes()) + 1);
          gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()) + 1);
-         gameField.setReproducedNamesMap(child.getTypes(), child.getName(), child.getId());
          playerCells[y][x].getQueue().add(child);
          System.out.println(this + " birth " + child);
       }
@@ -102,7 +100,7 @@ public abstract class Animal extends Living implements Cloneable{
                } else if ((x - move) >= 0) {
                   if(testCell(playerCells[y][x - move])) {
                      this.setCoordinate(x - move, y);
-                     this.setWeight((int)(this.getWeight() * 0.9));
+                     this.setWeight((int)(this.getWeight() * 0.5));
                      playerCells[y][x - move].getQueue().add(this);
                      System.out.println(this + " moved left on " + move + " steps ");
                   }else {

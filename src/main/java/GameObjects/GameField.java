@@ -1,22 +1,18 @@
 package GameObjects;
 
 import java.util.HashMap;
-import java.util.Iterator;
 
 public class GameField {
     private Cell[][] cells;
     private final  Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
             Types.DEER, Types.RABBIT, Types.MOUSE, Types.GOAT, Types.SHEEP, Types.BOAR, Types.BUFFALO,
             Types.DUCK, Types.WORM, Types.GRASS};
-    private final HashMap<Types, Integer> counterMap = new HashMap<>();
+    private final HashMap<Types, Integer> AllCounterMap = new HashMap<>();
     private final HashMap<Types, Integer> diedCountMap = new HashMap<>();
-    private final HashMap<Types, HashMap<String, Integer>> diedNamesMaps = new HashMap<>();
     private final HashMap<Types, Integer> reproduceCountMap = new HashMap<>();
-    private final HashMap<Types, HashMap<String, Integer>> reproducedNamesMap = new HashMap<>();
-    private final HashMap<Types, HashMap<String, Integer>> eatenNamesMap = new HashMap<>();
     private final HashMap<Types, Integer> eatenCountMap = new HashMap<>();
     private final HashMap<String, Integer> growMap = new HashMap<>();
-    private int eatenGrassWeight = 0;
+    private long eatenGrassWeight = 0L;
 
     public GameField() {
         for (Types T: names) {
@@ -33,10 +29,10 @@ public class GameField {
         this.cells = cells;
     }
     public void   setCounterMap(Types types, int id) {
-        counterMap.put(types, id);
+        AllCounterMap.put(types, id);
     }
     public int getCount(Types types){
-        return counterMap.get(types);
+        return AllCounterMap.get(types);
     }
 
     public HashMap<Types, Integer> getDiedCountMap() {
@@ -59,30 +55,7 @@ public class GameField {
     public void setEatenCountMap(Types types, int count){
         eatenCountMap.put(types, count);
     }
-    public void setDiedNamesMap(Types types, String name, int id){
-        HashMap<String , Integer>namesIdMap = new HashMap<>();
-        namesIdMap.put(name, id);
-        diedNamesMaps.put(types, namesIdMap);
-    }
-    public HashMap<String, Integer> getDiedNames(Types types){
-        return diedNamesMaps.get(types);
-    }
-    public void setReproducedNamesMap(Types types, String name, int id){
-        HashMap<String, Integer> namesIdMap = new HashMap<>();
-        namesIdMap.put(name, id);
-        reproducedNamesMap.put(types, namesIdMap);
-    }
-    public HashMap<String, Integer> getReproducedNames(Types types){
-        return reproducedNamesMap.get(types);
-    }
-    public void setEatenNamesMap(Types types, String name, int id){
-        HashMap<String, Integer> namesIdMap = new HashMap<>();
-        namesIdMap.put(name, id);
-        eatenNamesMap.put(types, namesIdMap);
-    }
-    public HashMap<String, Integer> getEatenNames(Types types){
-        return eatenNamesMap.get(types);
-    }
+
     public HashMap<String, Integer> getGrowMap(){
         return growMap;
     }
@@ -90,11 +63,14 @@ public class GameField {
         growMap.put(name, id);
     }
 
-    public int getEatenGrassWeight() {
+    public long getEatenGrassWeight() {
         return eatenGrassWeight;
     }
 
     public void setEatenGrassWeight(int eatenGrassWeight) {
         this.eatenGrassWeight += eatenGrassWeight;
+    }
+    public HashMap<Types, Integer> getTotalCount(){
+        return AllCounterMap;
     }
 }

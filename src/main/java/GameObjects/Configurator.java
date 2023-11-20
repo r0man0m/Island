@@ -81,8 +81,8 @@ public class Configurator {
         for (Cell[] C:cells) {
             for (Cell CELL:C) {
                 ArrayBlockingQueue<GameObject> queue = CELL.getQueue();
-                for (int i = 0; i < random.nextInt(1, CELL.getCapacity()); i++) {
-                    GameObject object = createGameObjectsFromYML(random.nextInt(1, livingNames.length));
+                for (int i = 0; i < random.nextInt(0, CELL.getCapacity()); i++) {
+                    GameObject object = createGameObjectsFromYML(random.nextInt(0, livingNames.length));
                     if(testCell(queue, object)) {
                         object.getCoordinate().setCoordinate(x, y);
                         object.setProperty(property.getMap(object.getTypes()));
@@ -105,7 +105,7 @@ public class Configurator {
     }
     public boolean testCell(ArrayBlockingQueue<GameObject> queue, GameObject object){
         int quantity = (int)queue.stream().filter(c->c.getTypes().equals(object.getTypes())).count();
-        if(quantity < object.getMaxQuantity()){
+        if(quantity < object.getMaxQuantity() || quantity == 0){
             return true;
         }
         else {

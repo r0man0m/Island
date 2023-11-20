@@ -21,7 +21,7 @@ public abstract class Herbivorous extends Animal{
                    if((O.getWeight() != 0) && (O.getWeight() > this.getMaxFood())){
                        int food = this.getMaxFood();
                        O.setWeight(O.getWeight() - food);
-                       gameField.setEatenGrassWeight(food);
+                       gameField.setEatenGrassWeight((int) (gameField.getEatenGrassWeight() + food));
                        System.out.println(this + " ate " + O);
                        if((this.getWeight() + food) > this.getMaxWeight()){
                            this.setWeight(this.getMaxWeight());

@@ -11,11 +11,13 @@ import java.util.concurrent.ScheduledExecutorService;
 public class GameEngine {
    private final Cell[][]cells;
    private GameField gameField;
+   private StatisticalMonitor monitor;
 
 
     public GameEngine(GameField gameField)  {
         this.gameField = gameField;
         cells = gameField.getField();
+        monitor = new StatisticalMonitor();
 
     }
     public  void play() throws InterruptedException {
@@ -45,7 +47,17 @@ public class GameEngine {
             }
             row++;
         }
-
+        System.out.println("All animals quantity");
+        monitor.showAllCounter(gameField.getTotalCount());
+        System.out.println("All reproduced animals");
+        monitor.showAllCounter(gameField.getReproduceCountMap());
+        System.out.println("All eaten animals");
+        monitor.showAllCounter(gameField.getEatenCountMap());
+        System.out.println("All died animals");
+        monitor.showAllCounter(gameField.getDiedCountMap());
+        System.out.println("All growing plants");
+        monitor.showAllGrowings(gameField.getGrowMap());
+        System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo");
 
     }
     public  void show() throws InterruptedException {
@@ -68,6 +80,8 @@ public class GameEngine {
             row++;
         }
         System.out.println();
+        System.out.println("First animals quantity");
+        monitor.showAllCounter(gameField.getTotalCount());
     }
 
 
