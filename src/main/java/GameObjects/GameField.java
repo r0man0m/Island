@@ -13,6 +13,7 @@ public class GameField {
     private final HashMap<Types, Integer> eatenCountMap = new HashMap<>();
     private final HashMap<String, Integer> growMap = new HashMap<>();
     private long eatenGrassWeight = 0L;
+    private long AllAnimalslCount = 0;
 
     public GameField() {
         for (Types T: names) {
@@ -72,5 +73,12 @@ public class GameField {
     }
     public HashMap<Types, Integer> getTotalCount(){
         return AllCounterMap;
+    }
+    public long getAllAnimalslCount(HashMap<Types, Integer> map){
+        int count = 0;
+        for (Types T:map.keySet()) {
+            count += map.get(T);
+        }
+        return count;
     }
 }

@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 
-public class GameEngine {
+public class GameEngine implements Runnable{
    private final Cell[][]cells;
    private GameField gameField;
    private StatisticalMonitor monitor;
@@ -85,16 +85,39 @@ public class GameEngine {
     }
 
 
-    public void playGame(){
-       FactoryThread factory = new FactoryThread();
-       Arrays.stream(cells).forEach(c->Arrays.stream(c).forEach(q->q.getQueue().forEach(o->{
-           Thread thread = factory.newThread(o);
-           thread.start();
-           ScheduledExecutorService service = Executors.newScheduledThreadPool(8, factory);
-           service.shutdown();
-       })));
+    public void playGame() {
+            FactoryThread factory = new FactoryThread();
+            Arrays.stream(cells).forEach(c -> Arrays.stream(c).forEach(q -> q.getQueue().forEach(o -> {
+                Thread thread = factory.newThread(o);
+                thread.start();
+
+            })));
+            ScheduledExecutorService service = Executors.newScheduledThreadPool(8, factory);
+            service.shutdown();
+
+
+   }
+   public void showStatistic(){
+
+            System.out.println();
+            System.out.println("All animals quantity");
+            monitor.showAllCounter(gameField.getTotalCount());
+            System.out.println("All reproduced animals");
+            monitor.showAllCounter(gameField.getReproduceCountMap());
+            System.out.println("All eaten animals");
+            monitor.showAllCounter(gameField.getEatenCountMap());
+            System.out.println("All died animals");
+            monitor.showAllCounter(gameField.getDiedCountMap());
+            System.out.println("All growing plants");
+            monitor.showAllGrowings(gameField.getGrowMap());
+            System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo");
+
    }
 
+    @Override
+    public void run() {
+        showStatistic();
+    }
 
     public  Cell[][] getCells() {
         return cells;

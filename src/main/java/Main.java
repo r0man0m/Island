@@ -1,4 +1,4 @@
-import GameObjects.Cell;
+
 import GameObjects.Configurator;
 import GameObjects.GameEngine;
 import GameObjects.GameField;
@@ -13,7 +13,21 @@ public class Main {
         GameField gameField = configurator.initGameField();
         GameEngine gameEngine = new GameEngine(gameField);
         gameEngine.show();
-        gameEngine.play();
+        while (!Thread.currentThread().isInterrupted()){
+            long count = gameField.getAllAnimalslCount(gameField.getTotalCount());
+            if(count > 150000) {
+
+                Thread.currentThread().interrupt();
+            }else {
+                Thread.sleep(2000);
+                gameEngine.playGame();
+            }
+        }
+
+        Thread.sleep(5000);
+            Thread thread = new Thread(gameEngine);
+            thread.start();
+
 
     }
 }
