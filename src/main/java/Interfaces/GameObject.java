@@ -3,8 +3,9 @@ package Interfaces;
 import GameObjects.*;
 
 import java.util.HashMap;
+import java.util.concurrent.Callable;
 
-public interface GameObject extends Runnable{
+public interface GameObject extends Callable<Boolean> {
     public void play(GameField gameField) throws CloneNotSupportedException;
     public int getMaxQuantity();
     public void setId(int id);
@@ -23,4 +24,7 @@ public interface GameObject extends Runnable{
     public void setAvatar(String avatar);
     public GameField getGameField();
     public void setGameField(GameField gameField);
+
+    @Override
+    Boolean call() throws Exception;
 }

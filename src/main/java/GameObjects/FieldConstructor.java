@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 @FieldAnnotation
 public class FieldConstructor implements Serializable {
-    private int length = 20;
+    private int length = 50;
     private int height = 10;
 
     public int getLength() {

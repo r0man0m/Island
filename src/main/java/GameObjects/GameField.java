@@ -13,10 +13,11 @@ public class GameField {
     private final HashMap<Types, Integer> eatenCountMap = new HashMap<>();
     private final HashMap<String, Integer> growMap = new HashMap<>();
     private long eatenGrassWeight = 0L;
-    private long AllAnimalslCount = 0;
+
 
     public GameField() {
         for (Types T: names) {
+            AllCounterMap.put(T, 0);
             diedCountMap.put(T, 0);
             reproduceCountMap.put(T, 0);
             eatenCountMap.put(T, 0);

@@ -13,7 +13,7 @@ public abstract class Living implements GameObject {
     private String name;
     private String avatar;
     transient
-    private int id;
+    private volatile int id;
     private int weight;
     private int maxWeight;
     private int maxQuantity;
@@ -41,12 +41,13 @@ public abstract class Living implements GameObject {
     }
 
     @Override
-    public void run() {
+    public Boolean call() {
         try {
             play(gameField);
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
+        return true;
     }
 
     public Living(int id) {

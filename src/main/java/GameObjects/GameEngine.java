@@ -3,9 +3,13 @@ package GameObjects;
 import Interfaces.GameObject;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class GameEngine {
@@ -85,23 +89,27 @@ public class GameEngine {
     }
 
 
-    public void playGame() {
-            FactoryThread factory = new FactoryThread();
-            Arrays.stream(cells).forEach(c -> Arrays.stream(c).forEach(q -> q.getQueue().forEach(o -> {
-                Thread thread = factory.newThread(o);
-                thread.start();
-                thread.setPriority(9);
+    public void playGame() throws InterruptedException {
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(20);
+        //System.out.println("Game number: " + i + " #########################################################");
+            //FactoryThread factory = new FactoryThread();
+            //Arrays.stream(cells).forEach(c -> Arrays.stream(c).forEach(q -> q.getQueue().forEach(o -> {
+                //Thread thread = factory.newThread(o);
+                //thread.start();
+                //System.out.println("Game number: " + i + " #########################################################");
+                //service.execute(o);
 
-            })));
-            ScheduledExecutorService service = Executors.newScheduledThreadPool(8, factory);
+            //})));
+            Collection<GameObject> gameObjectList = Arrays.stream(cells)
+                    .flatMap(Arrays::stream).map(Cell::getQueue).flatMap(Collection::stream).toList();
+            service.invokeAll(gameObjectList);
             service.shutdown();
 
 
    }
    public void statistic(){
         Thread thread = new Thread(()->{
-            System.out.println();
-            System.out.println("---------------------------------------");
+            System.out.println('\n' + "---------------------------------------");
             System.out.println("For continue enter any number or letter");
             System.out.println("---------------------------------------");
             showStatistic();
@@ -112,18 +120,19 @@ public class GameEngine {
    }
    public void showStatistic(){
 
-            System.out.println();
-            System.out.println("All animals quantity");
+
+            System.out.println('\n' + "All animals quantity");
             monitor.showAllCounter(gameField.getTotalCount());
-            System.out.println("All reproduced animals");
+            System.out.println("All reproduced animals quantity");
             monitor.showAllCounter(gameField.getReproduceCountMap());
-            System.out.println("All eaten animals");
+            System.out.println("All eaten animals quantity");
             monitor.showAllCounter(gameField.getEatenCountMap());
-            System.out.println("All died animals");
+            System.out.println("All died animals quantity");
             monitor.showAllCounter(gameField.getDiedCountMap());
-            System.out.println("All growing plants");
+            System.out.println("All growing plants quantity");
             monitor.showAllGrowings(gameField.getGrowMap());
-            System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo");
+            System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo" + '\n' + '\n');
+
 
    }
 

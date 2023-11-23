@@ -15,7 +15,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Configurator {
     private  GameField gameField;
     private Avatar avatar;
-    private  int id = 0;
+    private volatile int id = 1;
     private  final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
             "Duck.YML", "Eagle.YML", "Fox.YML", "Goat.YML", "Grass.YML", "Horse.YML", "Mouse.YML", "Rabbit.YML",
             "Sheep.YML", "Wolf.YML", "Worm.YML"};
