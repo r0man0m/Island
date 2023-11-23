@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 
-public class GameEngine implements Runnable{
+public class GameEngine {
    private final Cell[][]cells;
    private GameField gameField;
    private StatisticalMonitor monitor;
@@ -20,7 +20,7 @@ public class GameEngine implements Runnable{
         monitor = new StatisticalMonitor();
 
     }
-    public  void play() throws InterruptedException {
+   /* public  void play() throws InterruptedException {
         Thread.sleep(10000);
         System.out.println("Start playing");
         System.out.println("-------------");
@@ -59,7 +59,7 @@ public class GameEngine implements Runnable{
         monitor.showAllGrowings(gameField.getGrowMap());
         System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo");
 
-    }
+    }*/
     public  void show() throws InterruptedException {
         System.out.println("Game table!");
         System.out.println("_____________");
@@ -90,6 +90,7 @@ public class GameEngine implements Runnable{
             Arrays.stream(cells).forEach(c -> Arrays.stream(c).forEach(q -> q.getQueue().forEach(o -> {
                 Thread thread = factory.newThread(o);
                 thread.start();
+                thread.setPriority(9);
 
             })));
             ScheduledExecutorService service = Executors.newScheduledThreadPool(8, factory);
@@ -99,6 +100,10 @@ public class GameEngine implements Runnable{
    }
    public void statistic(){
         Thread thread = new Thread(()->{
+            System.out.println();
+            System.out.println("---------------------------------------");
+            System.out.println("For continue enter any number or letter");
+            System.out.println("---------------------------------------");
             showStatistic();
         });
         ScheduledExecutorService service = Executors.newScheduledThreadPool(8);
@@ -122,10 +127,6 @@ public class GameEngine implements Runnable{
 
    }
 
-    @Override
-    public void run() {
-        showStatistic();
-    }
 
     public  Cell[][] getCells() {
         return cells;
