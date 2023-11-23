@@ -97,6 +97,14 @@ public class GameEngine implements Runnable{
 
 
    }
+   public void statistic(){
+        Thread thread = new Thread(()->{
+            showStatistic();
+        });
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(8);
+        service.execute(thread);
+        service.shutdown();
+   }
    public void showStatistic(){
 
             System.out.println();
