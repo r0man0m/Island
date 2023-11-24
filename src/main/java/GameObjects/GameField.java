@@ -30,8 +30,8 @@ public class GameField {
     public void setGameField(Cell[][]cells){
         this.cells = cells;
     }
-    public void   setCounterMap(Types types, int id) {
-        AllCounterMap.put(types, id);
+    public void   setCounterMap(Types types, int count) {
+        AllCounterMap.put(types, count);
     }
     public int getCount(Types types){
         return AllCounterMap.get(types);

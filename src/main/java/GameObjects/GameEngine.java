@@ -79,7 +79,7 @@ public class GameEngine {
             monitor.showAllCounter(gameField.getDiedCountMap());
             System.out.println("All growing plants quantity");
             monitor.showAllGrowings(gameField.getGrowMap());
-            System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo" + '\n' + '\n');
+            monitor.showEatenGrassWeight(gameField);
 
 
    }
