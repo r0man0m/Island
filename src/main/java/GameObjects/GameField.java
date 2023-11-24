@@ -75,11 +75,5 @@ public class GameField {
     public HashMap<Types, Integer> getTotalCount(){
         return AllCounterMap;
     }
-    public long getAllAnimalslCount(HashMap<Types, Integer> map){
-        int count = 0;
-        for (Types T:map.keySet()) {
-            count += map.get(T);
-        }
-        return count;
-    }
+
 }

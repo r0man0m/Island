@@ -47,25 +47,28 @@ public abstract class Omnivorous extends Animal{
                 }
             }else {
                 if(this.getWeight() < this.getMaxWeight()){
-                    if(getProbability(O.getTypes())){
+                    if(getProbability(O.getTypes())) {
                         int w = O.getWeight();
-                        if(w < this.getMaxFood()){
+                        if (w < this.getMaxFood()) {
                             int food = this.getMaxFood();
-                            if((this.getWeight() + food) < this.getMaxWeight()){
+                            if ((this.getWeight() + food) < this.getMaxWeight()) {
                                 this.setWeight(this.getWeight() + food);
-                            }else {
+                            } else {
                                 this.setWeight(this.getMaxWeight());
                             }
-                        }else if((this.getWeight() + w) < this.getMaxWeight()){
+                        } else if ((this.getWeight() + w) < this.getMaxWeight()) {
                             this.setWeight(this.getWeight() + w);
-                        }
-                        else {
+                        } else {
                             this.setWeight(this.getMaxWeight());
                         }
                         queues.remove(O);
-                        gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
-                        gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
-                        System.out.println(this + " ate " + O);
+                        synchronized (gameField) {
+                            if (gameField.getCount(this.getTypes()) != 0) {
+                                gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
+                            }
+                            gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
+                            System.out.println(this + " ate " + O);
+                        }
                     }
                 }
             }

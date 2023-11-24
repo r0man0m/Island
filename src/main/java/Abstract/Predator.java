@@ -33,8 +33,12 @@ public abstract class Predator extends Animal {
                         this.setWeight(this.getMaxWeight());
                     }
                     queues.remove(O);
-                    gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
-                    gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
+                    synchronized (gameField) {
+                        gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
+                        if (gameField.getCount(this.getTypes()) != 0) {
+                            gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
+                        }
+                    }
                     System.out.println(this + " ate " + O);
                 }
             }

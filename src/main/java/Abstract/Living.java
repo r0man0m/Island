@@ -36,7 +36,7 @@ public abstract class Living implements GameObject {
 
 
     @Override
-    public void play(GameField gameField) throws CloneNotSupportedException {
+    public void play(GameField gameField) throws CloneNotSupportedException, InterruptedException {
 
     }
 
@@ -45,6 +45,8 @@ public abstract class Living implements GameObject {
         try {
             play(gameField);
         } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         return true;

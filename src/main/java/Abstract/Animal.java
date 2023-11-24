@@ -18,7 +18,7 @@ public abstract class Animal extends Living implements Cloneable{
 
 
    @Override
-   public void play(GameField gameField) throws CloneNotSupportedException {
+   public void play(GameField gameField) throws CloneNotSupportedException, InterruptedException {
       go(gameField);
       eat(gameField);
       reproduce(gameField);
@@ -31,7 +31,9 @@ public abstract class Animal extends Living implements Cloneable{
       int y = getCoordinate().getY();
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       if(this.getWeight() < this.getMaxWeight() / 4){
-         gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
+         if(gameField.getCount(this.getTypes()) != 0) {
+            gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
+         }
          gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
          System.out.println(this + " died(");
          queues.remove(this);
@@ -41,7 +43,7 @@ public abstract class Animal extends Living implements Cloneable{
 
 
 
-   public  void reproduce(GameField gameField) throws CloneNotSupportedException {
+   public  void reproduce(GameField gameField) throws CloneNotSupportedException, InterruptedException {
       Cell[][]playerCells = gameField.getField();
       int x = getCoordinate().getX();
       int y = getCoordinate().getY();
@@ -183,6 +185,6 @@ public abstract class Animal extends Living implements Cloneable{
       setCoordinate(x, y);
       this.setWeight((int)(this.getWeight() * 0.9));
       queues.add(this);
-      System.out.println(this + " stayed here ");
+      System.out.println(this + " don`t move ");
    }
 }

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 public interface GameObject extends Callable<Boolean> {
-    public void play(GameField gameField) throws CloneNotSupportedException;
+    public void play(GameField gameField) throws CloneNotSupportedException, InterruptedException;
     public int getMaxQuantity();
     public void setId(int id);
     public int getId();

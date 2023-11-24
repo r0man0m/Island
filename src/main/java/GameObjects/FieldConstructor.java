@@ -6,24 +6,9 @@ import java.io.IOException;
 import java.io.Serializable;
 @FieldAnnotation
 public class FieldConstructor implements Serializable {
-    private int length = 50;
-    private int height = 10;
+    private int length = 100;
+    private int height = 20;
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
 
     public Cell[][] initF() {
         int id = 0;
