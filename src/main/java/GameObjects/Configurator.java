@@ -78,27 +78,38 @@ public class Configurator {
         gameField = new GameField();
         Random random = new Random();
         Cell[][] cells = createGameFieldFromYML().initF();
+        gameField.setGameField(cells);
         for (Cell[] C:cells) {
             for (Cell CELL:C) {
                 ArrayBlockingQueue<GameObject> queue = CELL.getQueue();
                 for (int i = 0; i < random.nextInt(0, CELL.getCapacity()); i++) {
                     GameObject object = createGameObjectsFromYML(random.nextInt(0, livingNames.length));
-                    if(testCell(queue, object)) {
-                        object.getCoordinate().setCoordinate(x, y);
-                        object.setProperty(property.getMap(object.getTypes()));
-                        object.setAvatar(avatar.getAvatarStrings(object.getTypes()));
-                        object.setGameField(gameField);
-                        queue.put(object);
-                        gameField.setCounterMap(object.getTypes(), object.getId());
+                    if(object.getTypes().equals(Types.GRASS)){
+                        for (int j = 0; j < 5; j++) {
+                            addGameObject(queue, object, x, y);
+                        }
+                    }else {
+                        addGameObject(queue, object, x, y);
                     }
+
                 }
                 x++;
             }
             x = 0;
             y++;
         }
-          gameField.setGameField(cells);
+
           return gameField;
+    }
+    public void addGameObject(ArrayBlockingQueue<GameObject> queue, GameObject object, int x, int y) throws InterruptedException {
+        if(testCell(queue, object)) {
+            object.getCoordinate().setCoordinate(x, y);
+            object.setProperty(property.getMap(object.getTypes()));
+            object.setAvatar(avatar.getAvatarStrings(object.getTypes()));
+            object.setGameField(gameField);
+            queue.put(object);
+            gameField.setCounterMap(object.getTypes(), object.getId());
+        }
     }
     public  int getCounter(Types types){
         return gameField.getCount(types);

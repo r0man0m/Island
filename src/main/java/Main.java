@@ -16,8 +16,9 @@ public class Main {
         //configurator.crateYmlFiles();
         GameField gameField = configurator.initGameField();
         GameEngine gameEngine = new GameEngine(gameField);
-
+        System.out.println("Wait please.....");
         gameEngine.show();
+        Thread.sleep(5000);
 
         for (int i = 0; i < 10; i++) {
             try {

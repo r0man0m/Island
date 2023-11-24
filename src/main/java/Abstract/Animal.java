@@ -49,6 +49,7 @@ public abstract class Animal extends Living implements Cloneable{
       int y = getCoordinate().getY();
       if(testCell(playerCells[y][x]) && (playerCells[y][x].getQueue().stream().anyMatch(o->o.getTypes().equals(this.getTypes())))){
          GameObject child = (GameObject) this.clone();
+         child.setWeight(child.getMaxWeight());
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
          child.setId(gameField.getCount(child.getTypes()) + 1);
