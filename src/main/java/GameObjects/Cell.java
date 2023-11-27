@@ -11,7 +11,7 @@ public class Cell implements Serializable {
     private  ArrayBlockingQueue<GameObject> queue;
 
     public Cell() {
-        setCapacity(1000);
+        setCapacity(100);
         setId(id);
         queue = new ArrayBlockingQueue<>(capacity);
     }
