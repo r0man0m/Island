@@ -78,7 +78,7 @@ public class GameEngine {
             System.out.println("All died animals quantity");
             monitor.showAllCounter(gameField.getDiedCountMap());
             System.out.println("All growing plants quantity");
-            monitor.showAllGrowings(gameField.getGrowMap());
+            monitor.showAllGrowings(gameField.getAllGrowQuantity());
             monitor.showEatenGrassWeight(gameField);
 
 

@@ -20,13 +20,14 @@ public class Main {
         gameEngine.show();
         Thread.sleep(5000);
 
-        for (int i = 0; i < 10; i++) {
+
+        while (true){
             try {
                 gameEngine.playGame();
 
                 gameEngine.statistic();
 
-                Thread.sleep(10000);
+                Thread.sleep(5000);
             } catch (InterruptedException | ExecutionException | TimeoutException e) {
                 throw new RuntimeException(e);
             }

@@ -13,13 +13,8 @@ public class StatisticalMonitor {
 
         System.out.println();
     }
-    public void showAllGrowings(HashMap<String, Integer> map){
-        for (String S: map.keySet()) {
-            System.out.print(S + "-");
-            System.out.println(" " + map.get(S));
-        }
-        System.out.println("--------------------------");
-        System.out.println();
+    public void showAllGrowings(int count){
+        System.out.println(count);
     }
     public void showEatenGrassWeight(GameField gameField){
         System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo" + '\n' + '\n');

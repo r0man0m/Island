@@ -11,7 +11,7 @@ public class GameField {
     private final HashMap<Types, Integer> diedCountMap = new HashMap<>();
     private final HashMap<Types, Integer> reproduceCountMap = new HashMap<>();
     private final HashMap<Types, Integer> eatenCountMap = new HashMap<>();
-    private final HashMap<String, Integer> growMap = new HashMap<>();
+    private  int allGrowQuantity = 0;
     private long eatenGrassWeight = 0L;
 
 
@@ -58,11 +58,12 @@ public class GameField {
         eatenCountMap.put(types, count);
     }
 
-    public HashMap<String, Integer> getGrowMap(){
-        return growMap;
+    public int getAllGrowQuantity() {
+        return allGrowQuantity;
     }
-    public void setGrowMap(String name, int id){
-        growMap.put(name, id);
+
+    public void setAllGrowQuantity(int allGrowQuantity) {
+        this.allGrowQuantity += allGrowQuantity;
     }
 
     public long getEatenGrassWeight() {

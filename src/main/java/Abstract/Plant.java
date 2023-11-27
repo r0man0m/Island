@@ -15,7 +15,7 @@ public abstract class Plant extends Living {
             this.setWeight(this.getMaxWeight());
         }
         synchronized (gameField) {
-            gameField.setGrowMap(this.getName(), this.getId());
+            gameField.setAllGrowQuantity(1);
         }
         System.out.println(this + " grow ");
     }
