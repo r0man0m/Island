@@ -69,8 +69,8 @@ public class GameEngine {
    public void showStatistic(){
 
 
-            System.out.println('\n' + "All animals quantity");
-            monitor.showAllCounter(gameField.getTotalCount());
+           /* System.out.println('\n' + "All animals quantity");
+            monitor.showAllCounter(gameField.getTotalCount());*/
             System.out.println("All reproduced animals quantity");
             monitor.showAllCounter(gameField.getReproduceCountMap());
             System.out.println("All eaten animals quantity");
