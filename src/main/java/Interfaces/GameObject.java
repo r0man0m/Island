@@ -8,8 +8,8 @@ import java.util.concurrent.Callable;
 public interface GameObject extends Callable<Boolean> {
     public void play(GameField gameField) throws CloneNotSupportedException, InterruptedException;
     public int getMaxQuantity();
-    public void setId(int id);
-    public int getId();
+    public void setId(long id);
+    public long getId();
     public String getName();
     public Types getTypes();
     public void setCoordinate(int x, int y);

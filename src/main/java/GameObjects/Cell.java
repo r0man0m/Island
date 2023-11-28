@@ -7,7 +7,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class Cell implements Serializable {
     private  int capacity;
-    private int id;
+    private long id;
     private  ArrayBlockingQueue<GameObject> queue;
 
     public Cell() {
@@ -16,7 +16,7 @@ public class Cell implements Serializable {
         queue = new ArrayBlockingQueue<>(capacity);
     }
 
-    public Cell(int id) {
+    public Cell(long id) {
         this.id = id;
         queue = new ArrayBlockingQueue<>(capacity);
     }
@@ -25,11 +25,11 @@ public class Cell implements Serializable {
         return queue;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

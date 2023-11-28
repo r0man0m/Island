@@ -4,6 +4,8 @@ import GameObjects.GameEngine;
 import GameObjects.GameField;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
@@ -21,18 +23,30 @@ public class Main {
         Thread.sleep(5000);
 
 
+
         while (true){
             try {
-                gameEngine.playGame();
+                    gameEngine.playGame();
+                    gameEngine.statistic();
+                     System.out.println();
 
-                gameEngine.statistic();
+                    Scanner scanner = new Scanner(System.in);
+                    String s = scanner.nextLine();
+                    if(s.equalsIgnoreCase("stop")){
+                        Thread.currentThread().interrupt();
+                    }
 
-                Thread.sleep(5000);
-            } catch (InterruptedException | ExecutionException | TimeoutException e) {
-                throw new RuntimeException(e);
+                    Thread.sleep(5000);
+
+            } catch (InterruptedException | ExecutionException | InputMismatchException | TimeoutException e ) {
+
+                    break;
+                }finally {
+                System.out.println("The end");
+            }
             }
 
         }
     }
 
-}
+

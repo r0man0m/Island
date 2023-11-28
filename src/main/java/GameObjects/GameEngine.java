@@ -5,6 +5,7 @@ import Interfaces.GameObject;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -48,30 +49,35 @@ public class GameEngine {
     }
 
 
-    public void playGame() throws InterruptedException, ExecutionException, TimeoutException {
+    public  void playGame() throws InterruptedException, ExecutionException, TimeoutException {
         ScheduledExecutorService service = Executors.newScheduledThreadPool(20);
 
             Collection<GameObject> gameObjectList = Arrays.stream(cells)
                     .flatMap(Arrays::stream).map(Cell::getQueue).flatMap(Collection::stream).toList();
+
             service.invokeAll(gameObjectList);
 
             service.shutdown();
    }
-   public void statistic(){
+   public  void statistic(){
         Thread thread = new Thread(()->{
             showStatistic();
+
         });
         ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+
         //service.schedule(thread, 1, TimeUnit.SECONDS);
         service.execute(thread);
+
         service.shutdown();
+
    }
    public void showStatistic(){
 
 
            /* System.out.println('\n' + "All animals quantity");
             monitor.showAllCounter(gameField.getTotalCount());*/
-            System.out.println("All reproduced animals quantity");
+            System.out.println('\n' + "All reproduced animals quantity");
             monitor.showAllCounter(gameField.getReproduceCountMap());
             System.out.println("All eaten animals quantity");
             monitor.showAllCounter(gameField.getEatenCountMap());
@@ -81,6 +87,8 @@ public class GameEngine {
             monitor.showAllGrowings(gameField.getAllGrowQuantity());
             monitor.showEatenGrassWeight(gameField);
 
+       System.out.println("Enter s");
+       System.out.println();
 
    }
 

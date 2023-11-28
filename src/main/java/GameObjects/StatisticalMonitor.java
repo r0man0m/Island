@@ -3,7 +3,7 @@ package GameObjects;
 import java.util.HashMap;
 
 public class StatisticalMonitor {
-    public void showAllCounter(HashMap<Types, Integer> map){
+    public void showAllCounter(HashMap<Types, Long> map){
         System.out.println("-----------------------");
         for (Types T:map.keySet()) {
             System.out.print("[" + T + "-");
@@ -13,7 +13,7 @@ public class StatisticalMonitor {
 
         System.out.println();
     }
-    public void showAllGrowings(int count){
+    public void showAllGrowings(long count){
         System.out.println(count);
     }
     public void showEatenGrassWeight(GameField gameField){

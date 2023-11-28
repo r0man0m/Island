@@ -13,7 +13,7 @@ public abstract class Living implements GameObject {
     private String name;
     private String avatar;
     transient
-    private volatile int id;
+    private volatile long id;
     private int weight;
     private int maxWeight;
     private int maxQuantity;
@@ -52,7 +52,7 @@ public abstract class Living implements GameObject {
         return true;
     }
 
-    public Living(int id) {
+    public Living(long id) {
         this.id = id;
     }
 
@@ -65,10 +65,10 @@ public abstract class Living implements GameObject {
         this.name = name;
     }
 
-    public int getId() {return id;
+    public long getId() {return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

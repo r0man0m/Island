@@ -7,20 +7,20 @@ public class GameField {
     private final  Types[] names = {Types.WOLF, Types.BOA, Types.FOX, Types.BEAR, Types.EAGLE, Types.HORSE,
             Types.DEER, Types.RABBIT, Types.MOUSE, Types.GOAT, Types.SHEEP, Types.BOAR, Types.BUFFALO,
             Types.DUCK, Types.WORM, Types.GRASS};
-    private final HashMap<Types, Integer> AllCounterMap = new HashMap<>();
-    private final HashMap<Types, Integer> diedCountMap = new HashMap<>();
-    private final HashMap<Types, Integer> reproduceCountMap = new HashMap<>();
-    private final HashMap<Types, Integer> eatenCountMap = new HashMap<>();
-    private  int allGrowQuantity = 0;
+    private final HashMap<Types, Long> AllCounterMap = new HashMap<>();
+    private final HashMap<Types, Long> diedCountMap = new HashMap<>();
+    private final HashMap<Types, Long> reproduceCountMap = new HashMap<>();
+    private final HashMap<Types, Long> eatenCountMap = new HashMap<>();
+    private  long allGrowQuantity = 0;
     private long eatenGrassWeight = 0L;
 
 
     public GameField() {
         for (Types T: names) {
-            AllCounterMap.put(T, 0);
-            diedCountMap.put(T, 0);
-            reproduceCountMap.put(T, 0);
-            eatenCountMap.put(T, 0);
+            AllCounterMap.put(T, 0L);
+            diedCountMap.put(T, 0L);
+            reproduceCountMap.put(T, 0L);
+            eatenCountMap.put(T, 0L);
         }
     }
 
@@ -30,35 +30,35 @@ public class GameField {
     public void setGameField(Cell[][]cells){
         this.cells = cells;
     }
-    public void   setCounterMap(Types types, int count) {
+    public void   setCounterMap(Types types, long count) {
         AllCounterMap.put(types, count);
     }
-    public int getCount(Types types){
+    public long getCount(Types types){
         return AllCounterMap.get(types);
     }
 
-    public HashMap<Types, Integer> getDiedCountMap() {
+    public HashMap<Types, Long> getDiedCountMap() {
         return diedCountMap;
     }
-    public void setDieCountMap(Types types, int count){
+    public void setDieCountMap(Types types, long count){
         diedCountMap.put(types, count);
     }
 
-    public HashMap<Types, Integer> getReproduceCountMap() {
+    public HashMap<Types, Long> getReproduceCountMap() {
         return reproduceCountMap;
     }
-    public void setReproduceCountMap(Types types, int count){
+    public void setReproduceCountMap(Types types, long count){
         reproduceCountMap.put(types, count);
     }
 
-    public HashMap<Types, Integer> getEatenCountMap() {
+    public HashMap<Types, Long> getEatenCountMap() {
         return eatenCountMap;
     }
-    public void setEatenCountMap(Types types, int count){
+    public void setEatenCountMap(Types types, long count){
         eatenCountMap.put(types, count);
     }
 
-    public int getAllGrowQuantity() {
+    public long getAllGrowQuantity() {
         return allGrowQuantity;
     }
 
@@ -73,7 +73,7 @@ public class GameField {
     public void setEatenGrassWeight(int eatenGrassWeight) {
         this.eatenGrassWeight += eatenGrassWeight;
     }
-    public HashMap<Types, Integer> getTotalCount(){
+    public HashMap<Types, Long> getTotalCount(){
         return AllCounterMap;
     }
 

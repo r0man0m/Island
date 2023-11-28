@@ -15,7 +15,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class Configurator {
     private  GameField gameField;
     private Avatar avatar;
-    private volatile int id = 1;
+    private volatile long id = 1;
     private  final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
             "Duck.YML", "Eagle.YML", "Fox.YML", "Goat.YML", "Grass.YML", "Horse.YML", "Mouse.YML", "Rabbit.YML",
             "Sheep.YML", "Wolf.YML", "Worm.YML"};
@@ -111,7 +111,7 @@ public class Configurator {
             gameField.setCounterMap(object.getTypes(), object.getId());
         }
     }
-    public  int getCounter(Types types){
+    public  long getCounter(Types types){
         return gameField.getCount(types);
     }
     public boolean testCell(ArrayBlockingQueue<GameObject> queue, GameObject object){
