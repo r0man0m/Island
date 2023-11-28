@@ -44,7 +44,7 @@ public class Main {
                 }
                 if (choice == 1) {
                     configurator.crateYmlFiles();
-                    System.out.println("YML files was created");
+                    System.out.println("YML files was updated");
 
                 }
 
