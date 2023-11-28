@@ -14,7 +14,7 @@ public class StatisticalMonitor {
         System.out.println();
     }
     public void showAllGrowings(long count){
-        System.out.println(count);
+        System.out.print(" " +  count + " ");
     }
     public void showEatenGrassWeight(GameField gameField){
         System.out.println("Total mass of plants eaten  " + gameField.getEatenGrassWeight() / 1000 + " kilo" + '\n' + '\n');

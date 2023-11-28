@@ -85,7 +85,7 @@ public class Configurator {
                 for (int i = 0; i < random.nextInt(0, CELL.getCapacity()); i++) {
                     GameObject object = createGameObjectsFromYML(random.nextInt(0, livingNames.length));
                     if(object.getTypes().equals(Types.GRASS)){
-                        for (int j = 0; j < 5; j++) {
+                        for (int j = 0; j < 10; j++) {
                             addGameObject(queue, object, x, y);
                         }
                     }else {
