@@ -25,7 +25,7 @@ public class GameEngine {
     }
 
     public  void show() throws InterruptedException {
-        System.out.println("Start the game!");
+        System.out.println("\n Start the game!");
         System.out.println("_____________");
         Thread.sleep(2000);
         int row = 0;
