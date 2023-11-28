@@ -9,7 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Predator extends Animal {
-    public  void eat(GameField gameField){
+    public synchronized void eat(GameField gameField){
         Cell[][]cells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
@@ -33,18 +33,21 @@ public abstract class Predator extends Animal {
                         this.setWeight(this.getMaxWeight());
                     }
                     queues.remove(O);
-                    synchronized (gameField) {
+                    synchronized (gameField.getEatenCountMap()) {
                         gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
+                    }
+                    synchronized (gameField.getTotalCount()) {
                         if (gameField.getCount(this.getTypes()) != 0) {
                             gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
                         }
                     }
+
                     System.out.println(this + " ate " + O);
                 }
             }
         }
     }
-    public boolean getProbability(Types types){
+    public synchronized boolean getProbability(Types types){
         int propertyObject = getProperty(types);
         if(propertyObject != 0) {
             int probability = ThreadLocalRandom.current().nextInt(1, 100);

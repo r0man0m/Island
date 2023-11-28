@@ -48,10 +48,9 @@ public class Main {
 
                 }
 
-
+                    System.out.println("Wait please...");
                     GameField gameField = configurator.initGameField();
                     GameEngine gameEngine = new GameEngine(gameField);
-
                     gameEngine.show();
                     Thread.sleep(5000);
 

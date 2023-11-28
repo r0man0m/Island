@@ -9,7 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Omnivorous extends Animal{
-    public  void eat(GameField gameField){
+    public synchronized void eat(GameField gameField){
         Cell[][] playerCells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
@@ -89,20 +89,23 @@ public abstract class Omnivorous extends Animal{
                             this.setWeight(this.getMaxWeight());
                         }
                         queues.remove(O);
-                        synchronized (gameField) {
+                        synchronized (gameField.getTotalCount()) {
                             if (gameField.getCount(this.getTypes()) != 0) {
                                 gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
                             }
+                        }
+                        synchronized (gameField.getEatenCountMap()) {
                             gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
                             System.out.println(this + " ate " + O);
                         }
+
                     }
                 }
             }
 
         }
     }
-    public boolean getProbability(Types types){
+    public synchronized boolean getProbability(Types types){
         int propertyObject = getProperty(types);
         if(propertyObject == 100){
             return true;

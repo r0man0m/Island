@@ -10,7 +10,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 
 public abstract class Herbivorous extends Animal{
-    public  void eat(GameField gameField){
+    public synchronized void eat(GameField gameField){
         Cell[][]playerCells = gameField.getField();
         int x = getCoordinate().getX();
         int y = getCoordinate().getY();
@@ -72,7 +72,7 @@ public abstract class Herbivorous extends Animal{
             }
         }
     }
-    public boolean getProbability(Types types){
+    public synchronized boolean getProbability(Types types){
         int propertyObject = getProperty(types);
         if(propertyObject == 100) {
             return true;

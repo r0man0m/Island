@@ -32,11 +32,16 @@ public abstract class Animal extends Living implements Cloneable{
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       if(this.getWeight() < this.getMaxWeight() / 4){
          if(gameField.getCount(this.getTypes()) != 0) {
-            gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
-         }
-         gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
-         System.out.println(this + " died(");
-         queues.remove(this);
+            synchronized (gameField.getTotalCount()) {
+               gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
+            }
+            }
+            synchronized (gameField.getDiedCountMap()) {
+               gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
+
+            System.out.println(this + " died(");
+            queues.remove(this);
+      }
 
       }
    }
@@ -52,11 +57,15 @@ public abstract class Animal extends Living implements Cloneable{
          child.setWeight(child.getMaxWeight());
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
-         child.setId(gameField.getCount(child.getTypes()) + 1);
-         gameField.setCounterMap(child.getTypes(), gameField.getCount(child.getTypes()) + 1);
-         gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()) + 1);
-         System.out.println(this + " birth " + child);
-         playerCells[y][x].getQueue().add(child);
+            synchronized (gameField.getTotalCount()) {
+               child.setId(gameField.getCount(child.getTypes()) + 1);
+               gameField.setCounterMap(child.getTypes(), gameField.getCount(child.getTypes()) + 1);
+           }
+           synchronized (gameField.getReproduceCountMap()) {
+              gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()) + 1);
+              System.out.println(this + " birth " + child);
+              playerCells[y][x].getQueue().add(child);
+           }
       }
 
    }
@@ -81,7 +90,7 @@ public abstract class Animal extends Living implements Cloneable{
    }
 
 
-   public  void go(GameField gameField) {
+   public synchronized void go(GameField gameField) {
       Cell[][]cells = gameField.getField();
       if (!((this.getTypes().equals(Types.GRASS)) || ((this.getTypes().equals(Types.WORM))))) {
          int x = getCoordinate().getX();
@@ -173,7 +182,7 @@ public abstract class Animal extends Living implements Cloneable{
 
       }
    }
-   public boolean testCell(Cell cell){
+   public synchronized boolean testCell(Cell cell){
       int quantity = (int)cell.getQueue().stream().filter(c->c.getTypes().equals(this.getTypes())).count();
       if(quantity < this.getMaxQuantity()){
          return true;
@@ -182,7 +191,7 @@ public abstract class Animal extends Living implements Cloneable{
          return false;
       }
    }
-   public void stayHere(ArrayBlockingQueue<GameObject> queues, int x, int y){
+   public synchronized void stayHere(ArrayBlockingQueue<GameObject> queues, int x, int y){
       setCoordinate(x, y);
       this.setWeight((int)(this.getWeight() * 0.5));
       queues.add(this);

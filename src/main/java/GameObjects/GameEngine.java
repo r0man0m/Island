@@ -21,8 +21,8 @@ public class GameEngine {
     }
 
     public  void show() throws InterruptedException {
-        System.out.println("\n Start the game!");
-        System.out.println("_____________");
+        System.out.println("\n                                  Start the game!");
+        System.out.println("_________________________________________________________________________________________");
         Thread.sleep(2000);
         int row = 0;
         for (Cell[] C:cells) {
@@ -70,9 +70,9 @@ public class GameEngine {
    }
    public void showStatistic(){
 
-
-
-            System.out.println('\n' + "All reproduced animals quantity");
+            System.out.println('\n' + "Total animals quantity");
+            monitor.showAllCounter(gameField.getTotalCount());
+            System.out.println("All reproduced animals quantity");
             monitor.showAllCounter(gameField.getReproduceCountMap());
             System.out.println("All eaten animals quantity");
             monitor.showAllCounter(gameField.getEatenCountMap());
@@ -80,6 +80,7 @@ public class GameEngine {
             monitor.showAllCounter(gameField.getDiedCountMap());
             System.out.print("All growing plants quantity ");
             monitor.showAllGrowings(gameField.getAllGrowQuantity());
+            System.out.println();
             monitor.showEatenGrassWeight(gameField);
        System.out.println("-----------------------------------------------------------------------------");
        System.out.println("If you want to stop the game, enter \"stop\", or enter any letter for continue");

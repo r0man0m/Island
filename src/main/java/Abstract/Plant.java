@@ -5,7 +5,7 @@ import GameObjects.GameField;
 
 public abstract class Plant extends Living {
 
-    public void grow(GameField gameField){
+    public synchronized void grow(GameField gameField){
         if(this.getWeight() < this.getMaxWeight() && (this.getWeight() != 0)){
             this.setWeight(this.getWeight() + this.getWeight() / 5);
             if(this.getWeight() > this.getMaxWeight()){
