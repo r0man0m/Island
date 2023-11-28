@@ -4,11 +4,7 @@ import Interfaces.GameObject;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class GameEngine {
@@ -75,8 +71,7 @@ public class GameEngine {
    public void showStatistic(){
 
 
-           /* System.out.println('\n' + "All animals quantity");
-            monitor.showAllCounter(gameField.getTotalCount());*/
+
             System.out.println('\n' + "All reproduced animals quantity");
             monitor.showAllCounter(gameField.getReproduceCountMap());
             System.out.println("All eaten animals quantity");
