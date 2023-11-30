@@ -6,6 +6,7 @@ import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,14 +32,13 @@ public abstract class Animal extends Living implements Cloneable{
       int y = getCoordinate().getY();
       ArrayBlockingQueue<GameObject> queues = playerCells[y][x].getQueue();
       if(this.getWeight() < this.getMaxWeight() / 4){
-         if(gameField.getCount(this.getTypes()) != 0) {
+         if(!gameField.getCount(this.getTypes()).equals(BigInteger.ZERO)) {
             synchronized (gameField.getTotalCount()) {
-               gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()) - 1);
+               gameField.setCounterMap(this.getTypes(), gameField.getCount(this.getTypes()).add(BigInteger.valueOf(-1)));
             }
             }
             synchronized (gameField.getDiedCountMap()) {
-               gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()) + 1);
-
+               gameField.setDieCountMap(this.getTypes(), gameField.getDiedCountMap().get(this.getTypes()).add(BigInteger.ONE));
             System.out.println(this + " died(");
             queues.remove(this);
       }
@@ -58,11 +58,11 @@ public abstract class Animal extends Living implements Cloneable{
          child.setCoordinate(x, y);
          child.setAvatar(this.getAvatar());
             synchronized (gameField.getTotalCount()) {
-               child.setId(gameField.getCount(child.getTypes()) + 1);
-               gameField.setCounterMap(child.getTypes(), gameField.getCount(child.getTypes()) + 1);
+               child.setId(gameField.getCount(child.getTypes()).add(BigInteger.ONE));
+               gameField.setCounterMap(child.getTypes(), gameField.getCount(child.getTypes()).add(BigInteger.ONE));
            }
            synchronized (gameField.getReproduceCountMap()) {
-              gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()) + 1);
+              gameField.setReproduceCountMap(child.getTypes(), gameField.getReproduceCountMap().get(child.getTypes()).add(BigInteger.ONE));
               System.out.println(this + " birth " + child);
               playerCells[y][x].getQueue().add(child);
            }

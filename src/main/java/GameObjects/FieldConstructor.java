@@ -4,6 +4,8 @@ import Annotations.FieldAnnotation;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigInteger;
+
 @FieldAnnotation
 public class FieldConstructor implements Serializable {
     private int length = 100;
@@ -11,13 +13,13 @@ public class FieldConstructor implements Serializable {
 
 
     public Cell[][] initF() {
-        long id = 0;
+        BigInteger id = BigInteger.ZERO;
         Cell[][]cells = new Cell[height][length];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < length; j++) {
                 cells[i][j] = new Cell();
                 cells[i][j].setId(id);
-                id++;
+                id = id.add(BigInteger.ONE);
             }
         }
         return cells;

@@ -9,13 +9,14 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class Configurator {
     private  GameField gameField;
     private Avatar avatar;
-    private volatile long id = 1;
+    private volatile BigInteger id = BigInteger.ONE;
     private  final String[]livingNames = {"Bear.YML", "Boa.YML","Boar.YML", "Buffalo.YML", "Deer.YML",
             "Duck.YML", "Eagle.YML", "Fox.YML", "Goat.YML", "Grass.YML", "Horse.YML", "Mouse.YML", "Rabbit.YML",
             "Sheep.YML", "Wolf.YML", "Worm.YML"};
@@ -56,7 +57,7 @@ public class Configurator {
         String copyString = (String) yamlReader.read();
         GameObject gameObject = (GameObject)mapper.readValue(copyString,clazzes[choice]);
         gameObject.setId(id);
-        id++;
+        id = id.add(BigInteger.ONE);
         yamlReader.close();
         return gameObject;
     }
@@ -111,7 +112,7 @@ public class Configurator {
             gameField.setCounterMap(object.getTypes(), object.getId());
         }
     }
-    public  long getCounter(Types types){
+    public  BigInteger getCounter(Types types){
         return gameField.getCount(types);
     }
     public boolean testCell(ArrayBlockingQueue<GameObject> queue, GameObject object){

@@ -36,7 +36,7 @@ public class Main {
             while (choice != 1) {
                 try {
                     Scanner scanner = new Scanner(System.in);
-                    System.out.println("If you want to apply the new settings enter 1");
+                    System.out.println("If you want to apply the new settings enter \"1\"");
                     System.out.println("If you want to continue playing with the default settings enter any number");
                     choice = scanner.nextInt();
                 } catch (InputMismatchException e) {

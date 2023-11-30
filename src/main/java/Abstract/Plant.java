@@ -2,6 +2,8 @@ package Abstract;
 
 import GameObjects.GameField;
 
+import java.math.BigInteger;
+
 
 public abstract class Plant extends Living {
 
@@ -15,7 +17,7 @@ public abstract class Plant extends Living {
             this.setWeight(this.getMaxWeight());
         }
         synchronized (gameField) {
-            gameField.setAllGrowQuantity(1);
+            gameField.setAllGrowQuantity(BigInteger.ONE);
         }
         System.out.println(this + " grow ");
     }

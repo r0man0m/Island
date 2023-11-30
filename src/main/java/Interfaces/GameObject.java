@@ -2,14 +2,15 @@ package Interfaces;
 
 import GameObjects.*;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 public interface GameObject extends Callable<Boolean> {
     public void play(GameField gameField) throws CloneNotSupportedException, InterruptedException;
     public int getMaxQuantity();
-    public void setId(long id);
-    public long getId();
+    public void setId(BigInteger id);
+    public BigInteger getId();
     public String getName();
     public Types getTypes();
     public void setCoordinate(int x, int y);

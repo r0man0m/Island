@@ -12,4 +12,4 @@
    maxQuantity: 50
    maxMove: 2
    maxFood: 50000
-   id: 0
+   id: null

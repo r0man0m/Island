@@ -5,6 +5,7 @@ import GameObjects.GameField;
 import GameObjects.Types;
 import Interfaces.GameObject;
 
+import java.math.BigInteger;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -34,11 +35,11 @@ public abstract class Predator extends Animal {
                     }
                     queues.remove(O);
                     synchronized (gameField.getEatenCountMap()) {
-                        gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()) + 1);
+                        gameField.setEatenCountMap(O.getTypes(), gameField.getEatenCountMap().get(O.getTypes()).add(BigInteger.ONE));
                     }
                     synchronized (gameField.getTotalCount()) {
-                        if (gameField.getCount(this.getTypes()) != 0) {
-                            gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()) - 1);
+                        if (!gameField.getCount(this.getTypes()).equals(BigInteger.ZERO)) {
+                            gameField.setCounterMap(O.getTypes(), gameField.getCount(O.getTypes()).add(BigInteger.valueOf(-1)));
                         }
                     }
 

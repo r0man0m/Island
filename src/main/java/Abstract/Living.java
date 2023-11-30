@@ -3,6 +3,7 @@ package Abstract;
 import GameObjects.*;
 import Interfaces.GameObject;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 
 
@@ -13,7 +14,7 @@ public abstract class Living implements GameObject {
     private String name;
     private String avatar;
     transient
-    private volatile long id;
+    private volatile BigInteger id;
     private int weight;
     private int maxWeight;
     private int maxQuantity;
@@ -52,7 +53,7 @@ public abstract class Living implements GameObject {
         return true;
     }
 
-    public Living(long id) {
+    public Living(BigInteger id) {
         this.id = id;
     }
 
@@ -65,10 +66,10 @@ public abstract class Living implements GameObject {
         this.name = name;
     }
 
-    public long getId() {return id;
+    public BigInteger getId() {return id;
     }
 
-    public void setId(long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
